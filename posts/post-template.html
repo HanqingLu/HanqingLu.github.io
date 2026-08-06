@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Remove this noindex line after copying the template to a real post. -->
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f4f1eb" />
+    <title>Your Post Title · Henry's Log</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("theme");
+        const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (dark ? "dark" : "light");
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="Henry's Log home">
+        <span class="wordmark-mark">H</span>
+        <span>Henry's Log</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="../#writing">Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="article-shell">
+      <a class="back-link" href="../#writing">← All writing</a>
+
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">AUGUST 6, 2026 · 8 MIN READ</p>
+          <h1>Your post title goes here</h1>
+          <p class="article-dek">
+            A one- or two-sentence description that tells readers why the essay matters.
+          </p>
+        </header>
+
+        <div class="article-content">
+          <p>
+            Start with the question, tension, or observation that motivated the post. Keep the opening
+            concrete and give readers a reason to continue.
+          </p>
+
+          <h2>A useful section heading</h2>
+          <p>
+            Replace this text with your essay. You can add paragraphs, links, lists, quotations, images,
+            or code examples using standard HTML.
+          </p>
+
+          <blockquote>
+            A strong pull quote can make the core thesis easier to remember.
+          </blockquote>
+
+          <h2>What follows</h2>
+          <p>
+            End by summarizing the implication, the open question, or the next experiment.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="current-year"></span> Hanqing Lu</p>
+      <a href="#top" aria-label="Back to top">Back to top ↑</a>
+    </footer>
+
+    <script src="../assets/site.js"></script>
+  </body>
+</html>

@@ -32,19 +32,7 @@
 
   const posts = Array.isArray(window.BLOG_POSTS) ? [...window.BLOG_POSTS] : [];
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  if (posts.length === 0) {
-    const emptyState = document.createElement("div");
-    emptyState.className = "empty-state";
-
-    const message = document.createElement("p");
-    const title = document.createElement("strong");
-    title.textContent = "Notes are on the way.";
-    message.append(title, "Long-form writing on self-improving AI, agent evolution, and research systems will appear here.");
-    emptyState.append(message);
-    postList.append(emptyState);
-    return;
-  }
+  const categoryButtons = [...document.querySelectorAll("[data-category]")];
 
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
     month: "long",
@@ -52,42 +40,81 @@
     year: "numeric"
   });
 
-  posts.forEach((post) => {
-    const card = document.createElement("a");
-    card.className = "post-card";
-    card.href = post.url;
+  const renderPosts = (category = "All") => {
+    postList.replaceChildren();
+    const visiblePosts = category === "All"
+      ? posts
+      : posts.filter((post) => post.category === category);
 
-    const body = document.createElement("div");
-    const meta = document.createElement("div");
-    meta.className = "post-meta";
+    if (visiblePosts.length === 0) {
+      const emptyState = document.createElement("div");
+      emptyState.className = "empty-state";
 
-    const date = document.createElement("span");
-    date.textContent = dateFormatter.format(new Date(`${post.date}T12:00:00`));
-    meta.append(date);
-
-    if (post.readingTime) {
-      const readingTime = document.createElement("span");
-      readingTime.textContent = post.readingTime;
-      meta.append(readingTime);
+      const message = document.createElement("p");
+      const title = document.createElement("strong");
+      title.textContent = category === "Project" ? "Projects are on the way." : "Notes are on the way.";
+      message.append(title, category === "Project"
+        ? "Papers, systems, and research artifacts will appear here."
+        : "Long-form writing on self-improving AI, agent evolution, and research systems will appear here.");
+      emptyState.append(message);
+      postList.append(emptyState);
+      return;
     }
 
-    const title = document.createElement("h3");
-    title.textContent = post.title;
-    body.append(meta, title);
+    visiblePosts.forEach((post) => {
+      const card = document.createElement("a");
+      card.className = "post-card";
+      card.href = post.url;
 
-    if (post.summary) {
-      const summary = document.createElement("p");
-      summary.className = "post-summary";
-      summary.textContent = post.summary;
-      body.append(summary);
-    }
+      const body = document.createElement("div");
+      const meta = document.createElement("div");
+      meta.className = "post-meta";
 
-    const arrow = document.createElement("span");
-    arrow.className = "post-arrow";
-    arrow.setAttribute("aria-hidden", "true");
-    arrow.textContent = "→";
+      const categoryLabel = document.createElement("span");
+      categoryLabel.className = "post-type";
+      categoryLabel.textContent = post.category || "Essay";
+      meta.append(categoryLabel);
 
-    card.append(body, arrow);
-    postList.append(card);
+      const date = document.createElement("span");
+      date.textContent = dateFormatter.format(new Date(`${post.date}T12:00:00`));
+      meta.append(date);
+
+      if (post.readingTime) {
+        const readingTime = document.createElement("span");
+        readingTime.textContent = post.readingTime;
+        meta.append(readingTime);
+      }
+
+      const title = document.createElement("h3");
+      title.textContent = post.title;
+      body.append(meta, title);
+
+      if (post.summary) {
+        const summary = document.createElement("p");
+        summary.className = "post-summary";
+        summary.textContent = post.summary;
+        body.append(summary);
+      }
+
+      const arrow = document.createElement("span");
+      arrow.className = "post-arrow";
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "→";
+
+      card.append(body, arrow);
+      postList.append(card);
+    });
+  };
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = button.dataset.category || "All";
+      categoryButtons.forEach((candidate) => {
+        candidate.setAttribute("aria-pressed", String(candidate === button));
+      });
+      renderPosts(category);
+    });
   });
+
+  renderPosts();
 })();

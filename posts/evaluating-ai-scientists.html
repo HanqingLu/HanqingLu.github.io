@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#f4f1eb" />
     <title>How to Evaluate the AI Scientist / Self-Improving AI? · Henry's Log</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260806-3" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-5" />
     <script>document.documentElement.dataset.theme = "light";</script>
   </head>
   <body>
@@ -22,11 +22,10 @@
       <a class="back-link" href="../#writing">← All writing</a>
       <article>
         <header class="article-header">
-          <p class="eyebrow">JULY 8, 2026 · 5 MIN READ</p>
+          <p class="eyebrow">ESSAY · JULY 8, 2026 · 5 MIN READ</p>
           <h1>How to Evaluate the AI Scientist / Self-Improving AI?</h1>
           <p class="article-dek">The unit of progress in autonomous AI research is GPU-hours of earned trust.</p>
           <a class="article-source" href="https://x.com/HenryL_AI/status/2074890465577738277" target="_blank" rel="noreferrer">Originally published on X ↗</a>
-          <figure class="article-cover"><img src="https://pbs.twimg.com/media/HMsLoF-a8AAZaae.jpg" alt="Cover image for the AI scientist evaluation article" /></figure>
         </header>
         <div class="article-content">
           <p>Scope first: this post is only about AI systems that direct the training of AI models — reading results, changing recipes and data, launching runs, deciding what to try next.</p>
@@ -38,15 +37,27 @@
           <p>Decompose one research iteration into four elements: hypothesis (what to try) and strategy (how to allocate budget across tries) on the ideas side; execution (running one trial) and infra (the substrate everything runs on) on the implementation side.</p>
           <p>At GPT-2 scale — where the field's public demonstrations live, from AutoResearch (GPT-2, 5 min GPU runs), to <a href="https://www.nature.com/articles/s42256-025-01091-5">The AI Scientist</a> (~$15 of compute per paper), to <a href="https://arxiv.org/abs/2602.15112">ResearchGym's</a> 24-GPU-hour tasks — the implementation side is nearly free, and that is the entire secret of our comfort: a bad hypothesis costs minutes, failed runs are discarded, noise is averaged away with cheap repeats. Our comfort at this scale is made of the absence of any need for trust: every mistake is reversible and every claim is cheaply re-checkable.</p>
           <p>At frontier post-training scale, each element inflates — and each inflation creates a specific fear.</p>
+          <figure class="article-figure">
+            <img src="https://pbs.twimg.com/media/HMsKBtcbYAApJup.jpg" alt="Table comparing GPT-2-class autonomous research with frontier post-training" />
+            <figcaption>Moving from GPT-2-class experiments to 30B post-training expands the hypothesis space, execution cost, feedback delay, and infrastructure burden by orders of magnitude.</figcaption>
+          </figure>
           <p>Comfort doesn't transfer across scale because reversibility doesn't. What made autonomy safe at small scale was never the system's judgment — it was that judgment was cheap to verify and mistakes cheap to undo. At scale the scariest failure is silent: a loop that keeps spending real resources while optimizing an internal proxy that has quietly stopped tracking the external target.</p>
 
           <h2>2. How trust gets earned: auditability — coding already showed the way</h2>
           <p>This has played out once in public. In 2023 nobody let a model edit their codebase unattended. Cursor's real invention was not a better model — it was the per-diff accept/reject: every change became a small, individually auditable decision. People reviewed every diff; then they skimmed; then agent mode arrived and they accepted everything. Three years from zero comfort to handing over the codebase — driven not by more auditing but by early spot-checks calibrating trust, after which the trail's value stopped being that it was checked and became that it was checkable.</p>
           <p>The Accept/Reject Feature on Cursor gives people a way to audit the AI changes, gradually growing people's trust on AI produced changes.</p>
+          <figure class="article-figure">
+            <img src="https://pbs.twimg.com/media/HMsKX9-aMAAi1kc.jpg" alt="Cursor interface showing per-diff accept and reject controls" />
+            <figcaption>Per-diff Accept/Reject turned model-generated code into a sequence of small, auditable decisions.</figcaption>
+          </figure>
           <p>One disanalogy, and it decides the engineering: a bad diff is revertible — git and CI bound the downside of accepting everything. A bad multi-week training run is not; the GPU-weeks are gone. Reversibility, again, is what doesn't transfer — so an autonomous training loop needs heavier audit infrastructure than a coding agent ever did. Ours has four pieces, one per fear in the table: an immutable substrate the loop cannot overwrite; a frozen constitution it cannot rewrite; policy-only promotion with a full audit trail — every decision replayable by a human; noise-calibrated promotion thresholds so it cannot promote luck. Together they perform the same reduction Cursor performed on coding: “do I trust this system's judgment?” — a matter of faith — becomes “have I checked this audit trail?” — a matter of labor.</p>
 
           <h2>3. One Datapoint: An AI ran the post-training loop for a 30B model — with no human in the loop</h2>
           <p>With that infrastructure, one datapoint. We handed an autonomous loop a 30B Nemotron base and a multi-H200 cluster for four self-directed rounds — zero human interventions — and it finished at 0.86 against the top human submission's 0.87 (8th of ~4,000) on the NVIDIA Nemotron-Reasoning Challenge: to our knowledge the first publicly reported autonomous post-training run at this scale. And the event that matters most for the fear above: mid-campaign the loop's internal dev metric decoupled from the external target — dev hit record highs while the leaderboard sat flat, the exact silent failure that makes unattended scale terrifying. The loop detected it itself and inverted its search policy, asking for interventions that might lower the proxy while improving the external target — which produced the campaign-best external score. One un-replicated campaign; it does not prove the system trustworthy. It demonstrates something narrower and checkable: the most feared failure mode is, in this loop, detectable — and was detected once, with the full trail on record.</p>
+          <figure class="article-figure">
+            <img src="https://pbs.twimg.com/media/HMsILlrawAAcdxa.jpg" alt="A-Evolve-Training chart showing development and leaderboard scores across four rounds" />
+            <figcaption>The internal development score reached a record high while the external target stalled; the loop changed strategy and recovered external progress in round four.</figcaption>
+          </figure>
 
           <h2>What to report</h2>
           <p>If comfort is the operational metric, evaluations of AI-scientist systems should report what comfort is made of:</p>
@@ -59,11 +70,6 @@
           <p>Coding took three years to walk from per-diff review to agent mode, one calibrating spot-check at a time. Autonomous training is standing on the first rung of the same ladder — and whether it climbs is not ours to declare. It gets measured one way: whether the next operator, reading the audit trail, hands a loop like this one more GPU-hours than they would have yesterday. The unit of progress in this field is GPU-hours of earned trust.</p>
           <p>Prompted by Lilian Weng's <a href="https://lilianweng.github.io/posts/2026-07-04-harness/">harness engineering survey</a>, which maps how these loops are built; this post is about how to evaluate them. Disagreements welcome — especially on whether “comfort” can be replaced by an objective conversion metric, which we tried and failed to define above.</p>
           <p>Technical reference: <a href="https://arxiv.org/abs/2606.20657">A-Evolve-Training</a>.</p>
-          <div class="article-gallery">
-            <figure><img src="https://pbs.twimg.com/media/HMsKBtcbYAApJup.jpg" alt="Research-loop diagram from the original article" /></figure>
-            <figure><img src="https://pbs.twimg.com/media/HMsKX9-aMAAi1kc.jpg" alt="Auditability diagram from the original article" /></figure>
-            <figure><img src="https://pbs.twimg.com/media/HMsILlrawAAcdxa.jpg" alt="Autonomous post-training results from the original article" /></figure>
-          </div>
         </div>
       </article>
     </main>

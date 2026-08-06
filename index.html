@@ -16,13 +16,9 @@
     <meta property="og:type" content="website" />
     <title>Henry's Log</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/styles.css?v=20260806-3" />
     <script>
-      (() => {
-        const saved = localStorage.getItem("theme");
-        const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.dataset.theme = saved || (dark ? "dark" : "light");
-      })();
+      document.documentElement.dataset.theme = "light";
     </script>
   </head>
 
@@ -120,7 +116,7 @@
       <a href="#top" aria-label="Back to top">Back to top ↑</a>
     </footer>
 
-    <script src="assets/posts.js"></script>
-    <script src="assets/site.js"></script>
+    <script src="assets/posts.js?v=20260806-3"></script>
+    <script src="assets/site.js?v=20260806-3"></script>
   </body>
 </html>

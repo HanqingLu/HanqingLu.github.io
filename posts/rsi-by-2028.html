@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A practical standard for recursive self-improvement based on automating the work of frontier-model research." />
+    <meta name="theme-color" content="#f4f1eb" />
+    <title>RSI by 2028: What Should the Standard Be? · Henry's Log</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-3" />
+    <script>document.documentElement.dataset.theme = "light";</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="Henry's Log home"><span class="wordmark-mark">H</span><span>Henry's Log</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="../#writing">Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-icon" aria-hidden="true">◐</span></button>
+      </nav>
+    </header>
+    <main class="article-shell">
+      <a class="back-link" href="../#writing">← All writing</a>
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">MAY 7, 2026 · 3 MIN READ</p>
+          <h1>RSI by 2028: What Should the Standard Be?</h1>
+          <p class="article-dek">“Build your own successor” bundles capability together with capital, infrastructure, and organizational know-how. We need a cleaner test.</p>
+          <a class="article-source" href="https://x.com/HenryL_AI/status/2052438170420285455" target="_blank" rel="noreferrer">Originally published on X ↗</a>
+          <figure class="article-cover"><img src="https://pbs.twimg.com/media/HHsyeqLaYAAy9DU.jpg" alt="Cover image for the RSI by 2028 article" /></figure>
+        </header>
+        <div class="article-content">
+          <p><a href="https://x.com/jackclarkSF">@jackclarkSF</a> put a 60%+ probability on no-human-involved AI R&amp;D — “an AI system powerful enough that it could plausibly autonomously build its own successor” — by end of 2028. <a href="https://x.com/sudoraohacker">@sudoraohacker</a> pushed back at under 10%, citing benchmark gaps and infrastructure bottlenecks.</p>
+          <p>Both are arguing the timeline. I want to argue the question itself.</p>
+
+          <h2>What counts as “successor”?</h2>
+          <p>If “successor” means GPT-6 must build GPT-7 at frontier scale, then by Jack's standard, almost no entity on Earth currently does RSI — including most AI labs run by humans. Mistral can't build GPT-7. xAI can't. Every academic lab can't. Most strikingly: Meta can't, even though many of the same people who built GPT-class models at OpenAI now work there.</p>
+          <p>Same individuals, same intelligence, different organization — and no GPT-7. The bottleneck isn't cognitive. It's capital, infrastructure, organizational know-how, path dependency. So “build your own successor” silently bundles two questions: can an AI system self-improve (capability), and will it produce a frontier model (which requires OpenAI-scale infrastructure on top). Question 2's difficulty tells us almost nothing about question 1.</p>
+
+          <h2>Why benchmark scores don't settle this</h2>
+          <p>Arun's strongest move is citing hard benchmarks: no model fully resolves whole-program tasks on ProgramBench, CL-bench shows poor contextual learning. The implicit argument is: if individual agents can't clear these, the system is far from RSI.</p>
+          <p>This is a category error. Citing single-benchmark scores to argue against RSI feasibility is like citing IMO scores to argue humans can't prove novel mathematical theorems. Many smart human researchers don't ace IMO under timed conditions either. IMO measures one-shot individual capability. Theorem-proving is a system-level activity involving collaboration, time, tooling, peer review, and accumulated knowledge.</p>
+          <p>The same applies to ProgramBench. Best human programmers don't one-shot reconstruct FFmpeg either. They work in teams, with iteration, over weeks. Benchmark scores tell us about agent ceilings, not system feasibility.</p>
+
+          <h2>The standard I'd propose</h2>
+          <p>A meaningful RSI standard isn't about whether AI builds a successor model. It's this:</p>
+          <p><strong>Can every part of the work that goes into improving frontier models be done by a dedicated multi-agent system?</strong></p>
+          <p>Pretraining data strategy. Post-training recipe design. Eval construction. Kernel optimization. Scaling law experiments. Interpretability research. Alignment experiments. Take any frontier-lab scientist or science group, look at what they actually do day-to-day, and ask: can a properly designed multi-agent system do that work?</p>
+          <p>This question separates cleanly:</p>
+          <ul>
+            <li><strong>Capability:</strong> can the system, in principle, do this work? Empirically testable on every sub-task independently.</li>
+            <li><strong>Deployment:</strong> should we replace human researchers, how much, on what timeline? Organizational reality, politics, trust — nothing to do with AI capability.</li>
+          </ul>
+
+          <h2>The debate worth having</h2>
+          <p>For each part of frontier model work, has multi-agent capability crossed the feasibility threshold? How fast is the boundary moving?</p>
+          <p>That's empirical, tractable, and decision-relevant. It's what self-evolving agent research is actually mapping out, one task class at a time.</p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><p>© <span id="current-year"></span> Hanqing Lu</p><a href="#top" aria-label="Back to top">Back to top ↑</a></footer>
+    <script src="../assets/site.js?v=20260806-3"></script>
+  </body>
+</html>

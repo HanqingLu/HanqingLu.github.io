@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A map of three approaches to recursive self-improvement, organized by the cost of verification." />
+    <meta name="theme-color" content="#f4f1eb" />
+    <title>Why Researchers Are Leaving Frontier Labs: The Three Bets Called RSI · Henry's Log</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-3" />
+    <script>document.documentElement.dataset.theme = "light";</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="Henry's Log home"><span class="wordmark-mark">H</span><span>Henry's Log</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="../#writing">Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-icon" aria-hidden="true">◐</span></button>
+      </nav>
+    </header>
+    <main class="article-shell">
+      <a class="back-link" href="../#writing">← All writing</a>
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">AUGUST 6, 2026 · 5 MIN READ</p>
+          <h1>Why Researchers Are Leaving Frontier Labs: The Three Bets Called RSI</h1>
+          <p class="article-dek">August 2026. Google, OpenAI, and Anthropic all lost top researchers to RSI this year. A map of what they're actually betting.</p>
+          <a class="article-source" href="https://x.com/HenryL_AI/status/2085389550093025695" target="_blank" rel="noreferrer">Originally published on X ↗</a>
+          <figure class="article-cover"><img src="https://pbs.twimg.com/media/HPBf70jbwAEIyeH.jpg" alt="Cover image for the three RSI bets article" /></figure>
+        </header>
+        <div class="article-content">
+          <p>You keep seeing the same words from OpenAI, Anthropic, and other neolabs. Auto-research. Recursive Self-Improvement (RSI). Self-improving agents. Autonomous post-training. Another $1B funding round, another speedrun record, another “no human in the loop” claim.</p>
+          <p>Jeff Dean just left Google after 27 years with Sanjay Ghemawat, Oriol Vinyals and Quoc Le to found Discovery Loop — a public benefit corporation whose explicit goal is to automate the full experimental cycle (hypothesis → experiment → evaluation), starting with ML research itself.</p>
+          <p><a href="https://x.com/i/web/status/2085083442669318443">Read the Discovery Loop announcement on X.</a></p>
+          <p>And they aren't the only ones betting on RSI this year: <a href="https://the-decoder.com/ex-openai-researcher-jerry-tworek-launches-core-automation-to-build-the-most-automated-ai-lab-in-the-world/">Core Automation</a> (Jerry Tworek, ex-OpenAI), <a href="https://www.recursive.com/articles/first-steps-toward-automated-ai-research">Recursive</a> (Jeff Clune), and <a href="https://thenextweb.com/news/mirendil-200m-seed-ai-research">Mirendil</a> — ex-Anthropic researchers who raised a $200M seed at a $1B valuation to automate AI research itself. The firehose is only getting louder.</p>
+          <p>Most of these announcements are not about the same thing. They sit in different places on one simple axis: how expensive is verification?</p>
+          <p>That single number decides which part of the research loop you can actually automate, and therefore which bet you are making about recursive self-improvement.</p>
+
+          <h2>What RSI actually requires</h2>
+          <p><strong>Operational definition:</strong> frontier AI systems developing their successors, given enough resources. (For the Good-to-Yudkowsky lineage, see <a href="https://lilianweng.github.io/posts/2026-07-04-harness/">Weng 2026</a>.)</p>
+          <p><strong>Scope:</strong> AI research improving AI. Discovery Loop's roadmap runs on through hardware, drugs, and clean energy — this map covers its first target: ML research itself.</p>
+          <p>The loop is the same one human researchers run: propose → execute → verify → feed the result into the next round.</p>
+          <p>The price of the “verify” step stretches across nine orders of magnitude:</p>
+          <ul>
+            <li>milliseconds (exact kernel or math verifier)</li>
+            <li>minutes (nanoGPT / nanochat training run)</li>
+            <li>weeks (real post-training campaign)</li>
+            <li>months + nine figures (frontier pretraining)</li>
+          </ul>
+          <p>Verification cost is the ruler. Everything else follows from it.</p>
+
+          <h2>Three bets currently called “RSI”</h2>
+          <h3>Bet 1 — Cheap world: automate the ideas</h3>
+          <p>Where verification is almost free, you can afford thousands of attempts. So you iterate on the hardest stage: proposing better ideas.</p>
+          <p><a href="https://arxiv.org/abs/2506.13131">AlphaEvolve</a> evolves programs against exact evaluators. Recursive's system runs the full research loop on nanoGPT and nanochat speedruns (minutes per run). Most startups live here because they have no frontier pipeline to accelerate — idea generation is the only asset worth building.</p>
+          <p><strong>Strength:</strong> you can measure genuine ideation, not just execution. <strong>Catch:</strong> every idea is certified only by a cheap verifier. The standing worry is that ideas fancy in miniature die on arrival at 30B+.</p>
+
+          <h3>Bet 2 — Expensive world: automate execution, piece by piece</h3>
+          <p>Inside a real frontier pipeline every experiment burns GPU-hours, so you cannot search freely over ideas. Instead you automate the stages whose value can be proven one component at a time: data agents, sweeps, eval pipelines, research code.</p>
+          <p>This is where the big labs actually are. Most of the work is internal and quiet. Frontier labs already report that the large majority of their code is model-written. It is the least glamorous camp and, right now, the most real compounding happening.</p>
+          <p><strong>Ceiling:</strong> pure execution automation converges to excellent pipeline tooling. Humans still hold both ends of the loop — ideas and final judgment.</p>
+
+          <h3>Bet 3 — Pay the full price: bet on the seam</h3>
+          <p><strong>Thesis:</strong> the halves cannot be advanced separately. The hard part is the interface between ideas and verification, so keep them coupled on real models even while every component still lags humans.</p>
+          <p>Currently one clear public occupant: <a href="https://arxiv.org/abs/2606.20657">A-Evolve-Training</a> ran autonomous post-training of a 30B model across four self-directed rounds, reaching 0.86 against the top human team's 0.87 on a public leaderboard (8th of ~4,000). Mid-run the system detected its own metric decoupling from the external target and rewrote its search policy — the first empirical evidence that the seam is where things actually break. The same infrastructure has closed the loop at 120B and 550B.</p>
+          <p><strong>Caveats:</strong> still post-training only; the evolver itself runs on existing frontier models. The next milestone is written into the thesis: end-to-end train bigger, better models.</p>
+
+          <h2>How far are we, really?</h2>
+          <p>RSI on this map is not progress inside either world.</p>
+          <p>It is the gap between the two worlds closing — either cheap-world ideas proving they transfer, or the expensive world's provable surface expanding until it covers ideation.</p>
+          <p><strong>Current record:</strong></p>
+          <ul>
+            <li>Artifacts have crossed. Kernels born under a millisecond verifier now run inside production training stacks.</li>
+            <li>No research idea has made the crossing yet. Speedrun records are real and unvalidated at scale — both at once.</li>
+            <li>Execution is deep but piecewise. Humans still own the ends of the loop.</li>
+            <li>The full loop has closed once, at 30B post-training scale. Frontier pretraining remains a verification bill nobody can pay.</li>
+          </ul>
+          <p>That empty corner is the honest answer to “how far are we?”</p>
+
+          <h2>The filter you can keep</h2>
+          <p>Next time an auto-research announcement drops, ask three questions:</p>
+          <ol>
+            <li>Which stage of the loop does it automate?</li>
+            <li>What does its verification actually cost?</li>
+            <li>Did anything cross — did a result born where verification is cheap get adopted where it is expensive?</li>
+          </ol>
+          <p>If you can answer all three, you know exactly what was claimed.</p>
+          <p>If you can't, neither can they.</p>
+          <div class="article-gallery">
+            <figure><img src="https://pbs.twimg.com/media/HPBccbNaUAAO0X0.jpg" alt="Verification-cost map from the original RSI article" /></figure>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><p>© <span id="current-year"></span> Hanqing Lu</p><a href="#top" aria-label="Back to top">Back to top ↑</a></footer>
+    <script src="../assets/site.js?v=20260806-3"></script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Hanqing (Henry) Lu writes about self-improving AI, AI scientists, agent evolution, and research systems."
+    />
+    <meta name="theme-color" content="#f4f1eb" />
+    <meta property="og:title" content="Henry's Log" />
+    <meta
+      property="og:description"
+      content="Notes on self-improving AI, AI scientists, and scaling research attention."
+    />
+    <meta property="og:type" content="website" />
+    <title>Henry's Log</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("theme");
+        const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (dark ? "dark" : "light");
+      })();
+    </script>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="Henry's Log home">
+        <span class="wordmark-mark">H</span>
+        <span>Henry's Log</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="#writing">Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">HANQING (HENRY) LU</p>
+        <h1 id="hero-title">
+          Building AI scientists that scale
+          <span class="accent-text">research attention.</span>
+        </h1>
+
+        <p class="role-line">
+          Research Lead at Amazon <span aria-hidden="true">·</span> Self-improving AI
+          <span aria-hidden="true">·</span> ex–Carnegie Mellon, Microsoft Research
+        </p>
+
+        <div class="intro-copy">
+          <p>
+            I am building
+            <a href="https://github.com/A-EVO-Lab" target="_blank" rel="noreferrer">A-EVOLVE</a>
+            around one thesis: compute converts into capability through research attention—the input
+            that does not scale.
+          </p>
+          <p>
+            We build AI scientists that make it scale: frontier agents and models playing the
+            researcher role end to end, improving both agent harnesses and model weights. The longer
+            arc is bespoke agents and bespoke model training without staffing a research team per
+            model—and, as the loop compounds, faster frontier-model development itself.
+          </p>
+        </div>
+
+        <div class="social-links" aria-label="Social links">
+          <a
+            class="social-link"
+            href="https://x.com/HenryL_AI"
+            target="_blank"
+            rel="me noreferrer"
+            aria-label="Hanqing Lu on X"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"
+              />
+            </svg>
+            <span>@HenryL_AI</span>
+          </a>
+
+          <a
+            class="social-link"
+            href="https://www.linkedin.com/in/hanqinglu/"
+            target="_blank"
+            rel="me noreferrer"
+            aria-label="Hanqing Lu on LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9H7.12v11.452Z"
+              />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="writing" id="writing" aria-labelledby="writing-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">WRITING</p>
+            <h2 id="writing-title">Latest notes</h2>
+          </div>
+          <p class="section-note">Ideas, experiments, and lessons from building self-improving AI.</p>
+        </div>
+
+        <div class="post-list" id="post-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="current-year"></span> Hanqing Lu</p>
+      <a href="#top" aria-label="Back to top">Back to top ↑</a>
+    </footer>
+
+    <script src="assets/posts.js"></script>
+    <script src="assets/site.js"></script>
+  </body>
+</html>

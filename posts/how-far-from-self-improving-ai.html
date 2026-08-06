@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#f4f1eb" />
     <title>How Far Are We from Self-Improving AI? · Henry's Log</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260806-3" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-5" />
     <script>document.documentElement.dataset.theme = "light";</script>
   </head>
   <body>
@@ -22,11 +22,10 @@
       <a class="back-link" href="../#writing">← All writing</a>
       <article>
         <header class="article-header">
-          <p class="eyebrow">FEBRUARY 17, 2026 · 4 MIN READ</p>
+          <p class="eyebrow">ESSAY · FEBRUARY 17, 2026 · 4 MIN READ</p>
           <h1>How Far Are We from Self-Improving AI?</h1>
           <p class="article-dek">xAI predicts recursive self-improvement within 12 months. The missing test is whether improvement can scale beyond static benchmarks.</p>
           <a class="article-source" href="https://x.com/HenryL_AI/status/2023794545448940034" target="_blank" rel="noreferrer">Originally published on X ↗</a>
-          <figure class="article-cover"><img src="https://pbs.twimg.com/media/HBVT5FvaMAAp5Ks.jpg" alt="Cover image for the self-improving AI article" /></figure>
         </header>
         <div class="article-content">
           <p>In his recent departure post, xAI co-founder <a href="https://x.com/jimmybajimmyba">@jimmybajimmyba</a> dropped a timeline that set the research community buzzing: “Recursive self-improvement loops likely go live in the next 12 mo.” This isn't just hype. We are already seeing the primitives of this shift. Frameworks like OpenClaw allow agents to autonomously build their own tools when they hit a functional wall. Beyond the engineering, a mountain of literature on self-evolution, continual learning, and memory is finally reaching a boiling point.</p>
@@ -41,12 +40,20 @@
           <h2>1. The “Greenhouse” Trap: Why Math and Coding Aren't Real Evolution</h2>
           <p>Most current self-improvement research—from self-distillation to test-time training—is currently confined to Mathematics and Coding. While the performance gains are impressive, they exist within a “greenhouse” environment.</p>
           <p>The fundamental issue? These tasks lack a “Train-Deploy Gap.”</p>
+          <figure class="article-figure">
+            <img src="https://pbs.twimg.com/media/HBVTMqqbwAAYKa2.jpg" alt="Diagram contrasting static training with dynamic deployment across the train-deploy gap" />
+            <figcaption>Static training cannot anticipate every future edge case, API shift, and user constraint encountered during dynamic deployment.</figcaption>
+          </figure>
           <p>In closed-loop systems with static rules and verifiable ground truth, “evolution” is often just an expensive form of overfitting to a known distribution. If an agent cannot extract gradients from the feedback of a non-stationary distribution—environments it has never seen before—it isn't evolving. It is merely memorizing at a higher cost.</p>
           <p>True evolution only happens in the presence of entropy. To truly test self-improving AI, we must move beyond static benchmarks with “correct” answers. Good examples include enterprise tasks and personal Long-Horizon Tasks.</p>
 
           <h2>2. The Evolution-Scaling: Hypothesis or Law?</h2>
           <p>Many self-improvement projects look promising in the short term but crumble over time because they are inherently unstable. As <a href="https://x.com/DarioAmodei">@DarioAmodei</a> from Anthropic recently noted, solving catastrophic forgetting is the ultimate key to true continual learning.</p>
           <p>This leads us to a fundamental question: does self-improvement follow a scaling law similar to pre-training? If we increase the resources dedicated to an agent's self-improvement, will its intelligence continue to scale predictably? In our latest <a href="https://arxiv.org/abs/2602.00359">paper</a>, we formalize this as the Evolution-Scaling Hypothesis.</p>
+          <figure class="article-figure">
+            <img src="https://pbs.twimg.com/media/HBVRyfLboAAMvIH.jpg" alt="Conceptual chart of scaling laws across training, inference, and evolution" />
+            <figcaption>The proposed third scaling axis: shift compute from repeatedly solving toward learning once and reusing the improvement.</figcaption>
+          </figure>
           <p>Think about hiring a new graduate engineer. On their first day, they are technically brilliant but practically lost. They might struggle with internal APIs or legacy bugs. However, we don't just “re-train” their entire brain (parametric update) or let them blindly guess forever (heuristic memory). We allow them a three-month onboarding period—an evolution phase. By the end of three months, they are stable, senior-level contributors. Human intelligence is stable because it evolves robustly and does not always require dedicated clean training data.</p>
           <p>Currently, we are hesitant to deploy “self-improving” AI into production for months because we lack this stability. For self-improving AI to happen in the next 12 months, we must observe some kind of evolution-scaling law.</p>
 
@@ -57,10 +64,6 @@
             <li><strong>The Mission:</strong> We are building the team at Amazon AI to tackle large-scale agentic evolution. We are looking for those who want to build the open-ended AGI of the next decade.</li>
           </ul>
           <p>We are currently hiring interns, including remote and part-time opportunities. If you are interested in moving past the “greenhouse” and into the wild, let’s talk.</p>
-          <div class="article-gallery">
-            <figure><img src="https://pbs.twimg.com/media/HBVTMqqbwAAYKa2.jpg" alt="Illustration from the original self-improving AI article" /></figure>
-            <figure><img src="https://pbs.twimg.com/media/HBVRyfLboAAMvIH.jpg" alt="Diagram from the original self-improving AI article" /></figure>
-          </div>
         </div>
       </article>
     </main>

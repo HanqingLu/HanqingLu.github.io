@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Five findings from A-EVOLVE on harness design, verification, feedback granularity, and autonomous self-correction." />
+    <meta name="theme-color" content="#f4f1eb" />
+    <title>The Model Is Not the Bottleneck. The Harness Is. · Henry's Log</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-5" />
+    <script>document.documentElement.dataset.theme = "light";</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="Henry's Log home"><span class="wordmark-mark">H</span><span>Henry's Log</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="../#writing">Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-icon" aria-hidden="true">◐</span></button>
+      </nav>
+    </header>
+    <main class="article-shell">
+      <a class="back-link" href="../#writing">← All writing</a>
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">RESEARCH NOTE · APRIL 14, 2026 · 6 MIN READ</p>
+          <h1>The Model Is Not the Bottleneck. The Harness Is.</h1>
+          <p class="article-dek">Five findings from A-EVOLVE on when a harness unlocks capability, when an evolution loop learns, and when the available feedback makes learning impossible.</p>
+          <a class="article-source" href="https://a-evo-lab.github.io/a-evolve-tech-website/" target="_blank" rel="noreferrer">Read the full technical write-up ↗</a>
+          <figure class="article-cover"><img src="https://a-evo-lab.github.io/a-evolve-tech-website/static/images/Rule1_v3.png" alt="Rule 1: the capability already exists; the harness decides whether it shows up" /></figure>
+        </header>
+        <div class="article-content">
+          <p>We ran A-EVOLVE across SkillBench, MCP-Atlas, TerminalBench 2.0, and SWE-Bench Verified expecting to learn how agents improve. The repeated pattern was more specific: frontier models often already had the needed capability. The harness determined whether that capability appeared at the right moment, and the evolution loop determined whether the harness could improve over time.</p>
+          <p>This note records the five findings I would carry forward when building the next self-evolving agent.</p>
+
+          <h2>1. Verification was a deployment problem, not a missing capability</h2>
+          <p>Opus 4.6 routinely verifies its own work on short interactive tasks: it writes code, runs tests, inspects output, and fixes failures. On long-horizon TerminalBench 2.0 tasks, the same model often spent its budget executing commands and stopped without checking the result.</p>
+          <p>Our intervention was deliberately small: a self-verification skill and a one-line system-prompt nudge that made the agent load the skill near the end of the trajectory. On 21 unstable tasks, pass rate increased from 33.33% to 66.67%. Across the full benchmark, the agent reached a 76.5% pass rate, while observed verification frequency rose from 24% to 78%.</p>
+          <div class="finding-callout"><p><strong>The lesson:</strong> we did not teach the model how to verify. We changed the harness so that an existing capability was deployed at the right time.</p></div>
+
+          <h2>2. The evolver independently discovered that verification mattered</h2>
+          <p>On MCP-Atlas, we started with an empty skill library and 500 multi-step reasoning tasks. Across 17 evolution cycles, the evolver wrote five skills from scratch. Three of the five made verification a core component.</p>
+          <p>No instruction told the evolver to prioritize verification. The task failures supplied the pressure: the agent would select the wrong entity, fail to check it, and build the rest of the trajectory on that initial error. The model knew how to compare entities and attributes. What it lacked was a harness rule that made the comparison happen.</p>
+
+          <h2>3. The loop corrected its own bad interventions—twice</h2>
+          <p>At cycle 12, the evolver added a generic <code>completeness-check</code> skill. Performance dropped by roughly 10 percentage points. At cycle 13, it removed the skill and wrote the failure into its own memory: generic checklist-style skills should be avoided.</p>
+          <p>At cycle 15, it tried a <code>single-fact-lookup</code> skill. Performance dropped by roughly 10 points again. At cycle 16, the evolver removed that skill as well.</p>
+          <p>These were two complete add → observe → remove → generalize cycles without a human selecting the correction. The useful unit of self-improvement was not “the agent wrote a skill.” It was that the system could form an intervention, observe its effect, reverse it, and retain the lesson.</p>
+
+          <h2>4. More feedback made the evolver worse</h2>
+          <p>We varied how much information the evolver saw after failed SWE-Bench Verified attempts on 13 hard tasks:</p>
+          <ul>
+            <li><strong>Trajectory only, no score:</strong> 4/13 (30.8%).</li>
+            <li><strong>Score, failure type, and edited files:</strong> 8/13 (61.5%).</li>
+            <li><strong>Add failing test names:</strong> 4/13 (30.8%).</li>
+            <li><strong>Add full patch diffs:</strong> 2/13 (15.4%).</li>
+          </ul>
+          <p>Too little feedback prevented the evolver from localizing the failure. Too much anchored it to the failed implementation: instead of extracting a reusable pattern, it began repairing the previous patch and overfitting to one attempt. The middle level preserved the failure signal while abstracting away the implementation that produced it.</p>
+          <div class="finding-callout"><p><strong>The lesson:</strong> more feedback is not better feedback. An evolution loop needs the level of detail that exposes the causal lesson without anchoring it to a failed trajectory.</p></div>
+
+          <h2>5. A loop cannot learn constraints its feedback never exposes</h2>
+          <p>The harder limit appeared on a manufacturing scheduling task. A human-curated skill succeeded where the evolved skill failed because it contained one verifier-specific constraint: never start an operation earlier than the baseline.</p>
+          <p>That rule was not available in the task description or ordinary failure trace. It depended on knowledge of how correctness was judged. Scores and trajectories could not identify a constraint that never became legible in either signal.</p>
+          <p>This is a general boundary for autonomous evolution. The loop can only learn from what the environment makes observable. Verifier logic, environment-specific constraints, or external domain knowledge require either better instrumentation or a way for the agent to acquire evidence beyond its existing trajectory.</p>
+
+          <h2>What I take from these results</h2>
+          <p>The harness is not merely scaffolding around the model. It is a design object that determines when capability appears, what failures become visible, and which lessons an evolution loop is able to retain.</p>
+          <p>A capable model plus a weak harness can look incapable. A strong evolution algorithm plus the wrong feedback can learn the wrong lesson. Self-improving agents need both: a harness that makes capability deployable and a loop that makes the consequences of each intervention legible.</p>
+          <p>For the complete experiments and figures, read the <a href="https://a-evo-lab.github.io/a-evolve-tech-website/">technical write-up</a> or explore <a href="https://github.com/A-EVO-Lab/A-EVOLVE">A-EVOLVE on GitHub</a>.</p>
+          <div class="article-gallery">
+            <figure><img src="https://a-evo-lab.github.io/a-evolve-tech-website/static/images/Rule2_v2.png" alt="Rule 2: agents can learn their own harnesses, but only with the right loop" /></figure>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><p>© <span id="current-year"></span> Hanqing Lu</p><a href="#top" aria-label="Back to top">Back to top ↑</a></footer>
+    <script src="../assets/site.js?v=20260806-4"></script>
+  </body>
+</html>

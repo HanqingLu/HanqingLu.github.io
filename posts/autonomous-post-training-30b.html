@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="What four unattended rounds of autonomous post-training on a 30B model taught us about proxy metrics, research infrastructure, and system design." />
+    <meta name="theme-color" content="#f4f1eb" />
+    <title>What We Learned from Letting an AI Run the Post-Training Loop for a 30B Model · Henry's Log</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-5" />
+    <script>document.documentElement.dataset.theme = "light";</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="Henry's Log home"><span class="wordmark-mark">H</span><span>Henry's Log</span></a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="../#writing">Blog</a>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-icon" aria-hidden="true">◐</span></button>
+      </nav>
+    </header>
+    <main class="article-shell">
+      <a class="back-link" href="../#writing">← All writing</a>
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">RESEARCH NOTE · JUNE 9, 2026 · 6 MIN READ</p>
+          <h1>What We Learned from Letting an AI Run the Post-Training Loop for a 30B Model</h1>
+          <p class="article-dek">The score was the headline. The more useful findings were how the loop handled a misleading proxy, which system design failed, and what made expensive autonomous research auditable.</p>
+          <a class="article-source" href="https://a-evo-lab.github.io/a-evolve-training/" target="_blank" rel="noreferrer">Explore A-Evolve-Training ↗</a>
+          <div class="research-metrics" aria-label="A-Evolve-Training headline results">
+            <div class="research-metric"><strong>30B</strong><span>Nemotron base model</span></div>
+            <div class="research-metric"><strong>4</strong><span>unattended research rounds</span></div>
+            <div class="research-metric"><strong>0.86</strong><span>vs. the top human team's 0.87</span></div>
+          </div>
+        </header>
+        <div class="article-content">
+          <p>Post-training a frontier-scale model is normally a multi-week research campaign: propose data and recipe changes, launch GPU runs, debug failures, read evaluations, decide what to promote, and repeat. The expense of each trial is precisely why most public autonomous-research demonstrations stay near GPT-2 scale, where a failed experiment is cheap to rerun.</p>
+          <p>We wanted to test whether the research loop could close when experiments were no longer cheap. After a human authored and audited the initial substrate, A-Evolve-Training ran four rounds without human intervention on a 30B Nemotron base using a multi-H200 cluster. The resulting model reached 0.86 against the top human submission's 0.87 on the NVIDIA Nemotron-Reasoning Challenge, placing eighth among roughly 4,000 submissions at the time of writing.</p>
+          <p>One campaign does not establish a scaling law. It gives us a set of concrete, auditable observations about what becomes difficult when an AI system directs real post-training.</p>
+
+          <h2>1. The loop tried a data move the operator's prior would have rejected</h2>
+          <p>The system doubled one domain's share of the data mix from 5.9% to 11.1%. The prevailing operator prior predicted cannibalization: improving that domain should damage performance elsewhere. Instead, the intervention lifted off-target performance as well.</p>
+          <p>The significance is not that upsampling is intrinsically novel. It is that the loop selected and verified a move outside the operator's working prior. A system restricted to optimizing within human-proposed hypotheses would not have run the same test.</p>
+
+          <h2>2. The internal metric improved while the real target stopped moving</h2>
+          <p>Early rounds optimized the internal development score. Later candidates pushed that score to record highs—0.93 to 0.94—and lifted a weak domain from roughly 0.65 to 0.82. The external target remained flat.</p>
+          <p>This is the failure mode that makes unattended research at scale dangerous: the loop can keep spending resources while becoming increasingly successful at a proxy that has stopped tracking the real objective.</p>
+          <p>The system detected the decoupling and inverted its search policy. Instead of maximizing the development score, it began asking for interventions that might lower the proxy while improving the external target. That change produced the campaign's best external result.</p>
+          <div class="finding-callout"><p><strong>The finding:</strong> the loop did not merely optimize a fixed measurement frame. It recognized that the frame had become misleading and changed what counted as useful evidence.</p></div>
+
+          <h2>3. Expensive research changed the required infrastructure</h2>
+          <p>There was no “retry cheaply.” Each round spawned eight identical full-stack agents that edited recipes, launched real GPU jobs, debugged failures, evaluated checkpoints, and proposed what should happen next. Despite the cost structure, external performance improved monotonically across the four rounds.</p>
+          <p>This is as much an infrastructure result as a model result. At small scale, mistakes are reversible because another run costs minutes. At 30B scale, the system has to preserve comparability, recover from execution failures, and expose why a checkpoint was promoted before another expensive round begins.</p>
+
+          <h2>4. The intuitive multi-agent organization failed</h2>
+          <p>Our first design resembled a human research team: specialized data, training, and evaluation agents handed intermediate states to one another. It did not scale. Every handoff introduced unobserved variance, and compounding from those intermediate states corrupted the signal the selection process depended on.</p>
+          <p>The configuration that worked was the inverse:</p>
+          <ul>
+            <li><strong>One immutable substrate</strong> that every round re-forked and no winning trial could overwrite.</li>
+            <li><strong>Memory-free, identical full-stack workers</strong> instead of specialized roles passing partially understood states.</li>
+            <li><strong>A bounded meta-agent</strong> that could rewrite the next round's search policy but could not modify the substrate or evaluation.</li>
+          </ul>
+          <p>We call the principle <strong>asymmetric freedom</strong>: zero degrees of freedom on the axes that must stay invariant for trials to remain comparable, and maximal freedom on the axis where exploration pays—which semantic mutation to attempt.</p>
+
+          <h2>5. What this result does not prove</h2>
+          <p>The result is real, public, and narrow. It was one post-training campaign, not a replicated study. The evolver itself still runs on existing frontier models. The work does not automate frontier pretraining, and it does not show that the same decisions will transfer to every model family or research objective.</p>
+          <p>The same infrastructure also closed the loop at 120B and 550B, but without a comparable public human baseline those runs are infrastructure evidence only—not evidence that the resulting models matched human researchers.</p>
+          <p>The claim worth keeping is therefore specific: an autonomous system directed a multi-week post-training campaign at 30B scale, detected a misleading internal proxy, changed its own search policy, and approached the best public human result without intervention during the loop.</p>
+
+          <h2>The research question this opens</h2>
+          <p>Cheap autonomous research asks whether agents can generate and test many ideas. Expensive autonomous research asks whether a system can decide what evidence to trust when each test consumes real resources.</p>
+          <p>The next step is not simply more rounds. It is to determine which parts of the system's judgment transfer across models, which invariants must remain human-audited, and whether the loop can earn progressively larger compute budgets through an inspectable record of its decisions.</p>
+          <p>Read the <a href="https://a-evo-lab.github.io/a-evolve-training/">interactive technical page</a>, the <a href="https://a-evo-lab.github.io/a-evolve-training/a-evolve-training.pdf">full technical report</a>, or the <a href="https://arxiv.org/abs/2606.20657">paper on arXiv</a>.</p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><p>© <span id="current-year"></span> Hanqing Lu</p><a href="#top" aria-label="Back to top">Back to top ↑</a></footer>
+    <script src="../assets/site.js?v=20260806-4"></script>
+  </body>
+</html>

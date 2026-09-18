@@ -1,7 +1,11 @@
-# Henry's Log
+# Hanqing Lu — Research Homepage
 
-A dependency-free personal research blog for GitHub Pages. The design is inspired by the clarity and
-reading focus of Lil'Log, with original layout, typography, colors, and components.
+A dependency-free research homepage and writing archive for GitHub Pages. The homepage groups work
+into RSI-Harness, Autoresearch Harness, RSI-Evaluation, and RSI-Training. Henry's Log remains the
+writing archive at `writing.html`, and existing article URLs are preserved.
+
+The site opens in light mode on a first visit and remembers an explicit light/dark selection across
+the homepage, archive, and articles. No build step or package installation is required.
 
 ## Publish on GitHub Pages
 
@@ -34,7 +38,7 @@ The `.nojekyll` file tells GitHub Pages to serve the files exactly as written.
    window.BLOG_POSTS = [
      {
        title: "Why Research Attention Is the Bottleneck",
-       summary: "A short description shown on the homepage.",
+      summary: "A short description shown in the writing archive.",
        date: "2026-08-06",
        readingTime: "8 min read",
        url: "posts/research-attention.html"
@@ -42,7 +46,8 @@ The `.nojekyll` file tells GitHub Pages to serve the files exactly as written.
    ];
    ```
 
-Posts are sorted by date automatically, newest first.
+Posts in the archive are sorted by date automatically, newest first. The homepage has a manually
+curated writing selection; update it in `index.html` when featuring another article.
 
 ## Preview locally
 
@@ -56,7 +61,13 @@ Then open `http://localhost:8080`.
 
 ## Main files
 
-- `index.html`: homepage biography and social links
-- `assets/styles.css`: complete visual design and responsive styles
+- `index.html`: biography, lab, research directions, selected papers, and selected writing
+- `writing.html`: complete writing archive and category filters
+- `assets/research.css`: research homepage design and responsive layout
+- `assets/styles.css`: original article and archive layout
+- `assets/editorial.css`: shared editorial style for the writing archive and articles
+- `assets/theme.js`: first-visit light theme and saved preference initialization
+- `assets/site.js`: theme controls and writing archive rendering
+- `assets/images/SOURCES.md`: source URLs for the portrait and research figures
 - `assets/posts.js`: ordered blog-post data
 - `posts/post-template.html`: copy this for each new article

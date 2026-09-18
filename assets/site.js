@@ -10,15 +10,23 @@
         "aria-label",
         isDark ? "Switch to light theme" : "Switch to dark theme"
       );
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+      const label = themeToggle.querySelector(".theme-label");
+      if (label) label.textContent = isDark ? "Light" : "Dark";
     }
     if (themeColor) {
-      themeColor.setAttribute("content", isDark ? "#151514" : "#f4f1eb");
+      themeColor.setAttribute("content", isDark ? "#191a1b" : "#faf9f6");
     }
   };
 
   themeToggle?.addEventListener("click", () => {
     const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
     root.dataset.theme = nextTheme;
+    try {
+      localStorage.setItem("hanqing-site-theme", nextTheme);
+    } catch {
+      // Theme switching does not require storage permission.
+    }
     syncThemeUi();
   });
 

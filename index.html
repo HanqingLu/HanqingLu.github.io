@@ -1,129 +1,135 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Hanqing (Henry) Lu writes about self-improving AI, AI scientists, agent evolution, and research systems."
-    />
-    <meta name="theme-color" content="#f4f1eb" />
-    <meta property="og:title" content="Henry's Log" />
-    <meta
-      property="og:description"
-      content="Notes on self-improving AI, AI scientists, and scaling research attention."
-    />
-    <meta property="og:type" content="website" />
-    <title>Henry's Log</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/styles.css?v=20260806-5" />
-    <script>
-      document.documentElement.dataset.theme = "light";
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hanqing (Henry) Lu leads A-EVO Lab at Amazon. Research on recursive self-improvement, autoresearch systems, and evaluation.">
+    <meta name="theme-color" content="#faf9f6">
+    <meta property="og:title" content="Hanqing Lu | Recursive Self-Improvement &amp; Autonomous Research">
+    <meta property="og:description" content="Research, papers, and systems from Hanqing (Henry) Lu, Founder &amp; Research Lead of A-EVO Lab at Amazon.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hanqinglu.github.io/">
+    <title>Hanqing Lu | Recursive Self-Improvement &amp; Autonomous Research</title>
+    <link rel="canonical" href="https://hanqinglu.github.io/">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/research.css?v=20260918-1">
+    <script src="assets/theme.js?v=20260918-1"></script>
   </head>
-
-  <body>
-    <header class="site-header">
-      <a class="wordmark" href="./" aria-label="Henry's Log home">
-        <span class="wordmark-mark">H</span>
-        <span>Henry's Log</span>
-      </a>
-
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a class="nav-link is-active" href="#writing">Blog</a>
-        <button class="theme-toggle" type="button" aria-label="Switch color theme">
-          <span class="theme-icon" aria-hidden="true">◐</span>
-        </button>
+  <body id="lu-academic-home">
+    <a class="lu-skip" href="#lu-home">Skip to content</a>
+  <div class="lu-page">
+    <header class="lu-top">
+      <a class="lu-wordmark" href="#lu-home">Hanqing Lu</a>
+      <nav class="lu-navigation" aria-label="Primary navigation">
+        <a href="#lu-research">Research</a><a href="#lu-lab">Lab</a><a href="#writing">Writing</a><a href="#lu-background">Background</a>
+        <button class="lu-theme theme-toggle" type="button" aria-label="Switch to dark theme"><span class="theme-label">Dark</span></button>
       </nav>
     </header>
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">HANQING (HENRY) LU</p>
-        <h1 id="hero-title">
-          Building AI scientists that scale
-          <span class="accent-text">research attention.</span>
-        </h1>
-
-        <p class="role-line">
-          Research Lead at Amazon <span aria-hidden="true">·</span> Self-improving AI
-          <span aria-hidden="true">·</span> ex–Carnegie Mellon, Microsoft Research
-        </p>
-
-        <div class="intro-copy">
-          <p>
-            I am building
-            <a href="https://github.com/A-EVO-Lab" target="_blank" rel="noreferrer">A-EVOLVE</a>
-            around one thesis: compute converts into capability through research attention—the input
-            that does not scale.
-          </p>
-          <p>
-            We build AI scientists that make it scale: frontier agents and models playing the
-            researcher role end to end, improving both agent harnesses and model weights. The longer
-            arc is bespoke agents and bespoke model training without staffing a research team per
-            model—and, as the loop compounds, faster frontier-model development itself.
-          </p>
+    <main id="lu-home">
+      <section class="lu-hero" aria-labelledby="lu-name">
+        <div>
+          <p class="lu-eyebrow">Recursive self-improvement · Autonomous research</p>
+          <h1 id="lu-name">Hanqing (Henry) Lu</h1>
+          <p class="lu-role">Founder &amp; Research Lead, <a href="https://github.com/A-EVO-Lab" target="_blank" rel="noopener noreferrer">A-EVO Lab</a> at Amazon</p>
+          <p class="lu-intro">I study <strong>how AI can improve AI</strong>—from evolving agent harnesses to building autonomous research systems, evaluating their discoveries, and training models for research.</p>
+          <p class="lu-intro">I lead A-EVO Lab at Amazon and co-lead OpenRSI Index. Previously, I worked at Microsoft Research and earned my master’s degree in the Machine Learning Department at Carnegie Mellon University (CMU).</p>
+          <div class="lu-links"><a href="mailto:hanqinglucs@gmail.com">Email</a><a href="https://github.com/HanqingLu" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://x.com/HenryL_AI" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.linkedin.com/in/hanqinglu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
         </div>
-
-        <div class="social-links" aria-label="Social links">
-          <a
-            class="social-link"
-            href="https://x.com/HenryL_AI"
-            target="_blank"
-            rel="me noreferrer"
-            aria-label="Hanqing Lu on X"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"
-              />
-            </svg>
-            <span>@HenryL_AI</span>
-          </a>
-
-          <a
-            class="social-link"
-            href="https://www.linkedin.com/in/hanqinglu/"
-            target="_blank"
-            rel="me noreferrer"
-            aria-label="Hanqing Lu on LinkedIn"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9H7.12v11.452Z"
-              />
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-        </div>
+        <figure>
+          <img class="lu-portrait-photo" src="assets/images/hanqing-lu.jpg" alt="Hanqing (Henry) Lu" width="360" height="450" fetchpriority="high">
+        </figure>
       </section>
 
-      <section class="writing" id="writing" aria-labelledby="writing-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">WRITING</p>
-            <h2 id="writing-title">Latest notes</h2>
-          </div>
-          <p class="section-note">Ideas, experiments, and lessons from building self-improving AI.</p>
-        </div>
-
-        <div class="category-filter" aria-label="Filter writing by type">
-          <button type="button" data-category="All" aria-pressed="true">All</button>
-          <button type="button" data-category="Essay" aria-pressed="false">Essay</button>
-          <button type="button" data-category="Research Note" aria-pressed="false">Research Note</button>
-          <button type="button" data-category="Project" aria-pressed="false">Project</button>
-        </div>
-
-        <div class="post-list" id="post-list" aria-live="polite"></div>
+      <section id="lu-lab" class="lu-lab" aria-label="A-EVO Lab">
+        <a class="lu-lab-name" href="https://github.com/A-EVO-Lab" target="_blank" rel="noopener noreferrer">A-EVO Lab</a>
+        <p class="lu-lab-description">A research lab at Amazon focused on recursive self-improvement.</p>
+        <a class="lu-lab-link" href="https://github.com/A-EVO-Lab" target="_blank" rel="noopener noreferrer">Explore the lab ↗</a>
       </section>
+
+      <section id="lu-research" aria-labelledby="lu-research-heading">
+        <div class="lu-research-header"><h2 id="lu-research-heading">Research</h2><span class="lu-meta">Four connected directions</span></div>
+        <nav class="lu-agenda" aria-label="Research directions">
+          <a href="#lu-harness"><small>01</small>RSI-Harness</a>
+          <a href="#lu-autoresearch"><small>02</small>Autoresearch Harness</a>
+          <a href="#lu-evaluation"><small>03</small>RSI-Evaluation</a>
+          <a href="#lu-training" class="lu-agenda-future"><small>04</small>RSI-Training</a>
+        </nav>
+
+        <section id="lu-harness" class="lu-topic" aria-labelledby="lu-harness-title">
+          <div class="lu-topic-title"><span class="lu-index">01</span><h3 id="lu-harness-title">RSI-Harness</h3></div>
+          <p class="lu-question">Learning from experience through persistent improvements to skills, memory, prompts, and workflows.</p>
+
+          <article class="lu-work">
+            <figure><a class="lu-figure" href="https://github.com/A-EVO-Lab/a-evolve" target="_blank" rel="noopener noreferrer"><img src="assets/images/a-evolve-framework.png" alt="A-Evolve architecture and evolution-loop workflow" width="2894" height="2386" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">A-Evolve · system architecture</figcaption></figure>
+            <div><p class="lu-work-type">OPEN-SOURCE FRAMEWORK</p><h4><a href="https://github.com/A-EVO-Lab/a-evolve" target="_blank" rel="noopener noreferrer">A-Evolve</a></h4><p class="lu-summary">A shared framework for building evolvers that turn agent experience into durable improvements. The foundation for our work on online and adaptive harness learning.</p><div class="lu-links"><a href="https://github.com/A-EVO-Lab/a-evolve" target="_blank" rel="noopener noreferrer">Code ↗</a><a href="https://arxiv.org/abs/2602.00359" target="_blank" rel="noopener noreferrer">Position paper ↗</a><a href="https://a-evo-lab.github.io/a-evolve-tech-website/" target="_blank" rel="noopener noreferrer">Experiments ↗</a></div></div>
+          </article>
+
+          <article class="lu-work">
+            <figure><a class="lu-figure" href="https://arxiv.org/abs/2608.15071" target="_blank" rel="noopener noreferrer"><img src="assets/images/evo-harness.png" alt="Evo-Harness context-to-harness skill-compilation figure" width="492" height="617" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">Context-to-harness skill compilation</figcaption></figure>
+            <div><p class="lu-work-type">EMNLP 2026 · MAIN</p><h4><a href="https://arxiv.org/abs/2608.15071" target="_blank" rel="noopener noreferrer">Evo-Harness: Context-to-Harness Skill Compilation for Self-Evolving Agents</a></h4><p class="lu-authors">Tianxin Wei, Zhan Shi, et al., <strong>Hanqing Lu</strong></p><p class="lu-summary">Compiling noisy, one-shot execution experience into reusable skills for online harness learning.</p><div class="lu-links"><a href="https://arxiv.org/abs/2608.15071" target="_blank" rel="noopener noreferrer">Paper ↗</a><a href="https://github.com/A-EVO-Lab/a-evolve" target="_blank" rel="noopener noreferrer">Code ↗</a></div></div>
+          </article>
+
+          <article class="lu-work">
+            <figure><a class="lu-figure" href="https://arxiv.org/abs/2605.30621" target="_blank" rel="noopener noreferrer"><img src="assets/images/harness-updating.png" alt="Published figure contrasting harness updating with harness benefit across model capabilities" width="1631" height="511" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">Evolver capability &amp; solver benefit</figcaption></figure>
+            <div><p class="lu-work-type">EMNLP 2026</p><h4><a href="https://arxiv.org/abs/2605.30621" target="_blank" rel="noopener noreferrer">Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents</a></h4><p class="lu-authors">Minhua Lin, Juncheng Wu, et al., <strong>Hanqing Lu</strong></p><p class="lu-summary">Separating the ability to produce harness updates from the ability to benefit from them.</p><div class="lu-links"><a href="https://arxiv.org/abs/2605.30621" target="_blank" rel="noopener noreferrer">Paper ↗</a><a href="https://github.com/A-EVO-Lab/a-evolve" target="_blank" rel="noopener noreferrer">Code ↗</a></div></div>
+          </article>
+
+          <article class="lu-work">
+            <figure><a class="lu-figure" href="https://arxiv.org/abs/2603.18718" target="_blank" rel="noopener noreferrer"><img src="assets/images/memma.png" alt="MemMA memory-cycle framework from the paper" width="2047" height="1177" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">MemMA · memory-cycle framework</figcaption></figure>
+            <div><p class="lu-work-type">EMNLP 2026 · MAIN</p><h4><a href="https://arxiv.org/abs/2603.18718" target="_blank" rel="noopener noreferrer">MemMA: Coordinating the Memory Cycle through Multi-Agent Reasoning and In-Situ Self-Evolution</a></h4><p class="lu-authors">Minhua Lin, Zhiwei Zhang, <strong>Hanqing Lu</strong>, et al.</p><p class="lu-summary">Coordinating memory construction and retrieval, with verification and repair before memory is finalized.</p><div class="lu-links"><a href="https://arxiv.org/abs/2603.18718" target="_blank" rel="noopener noreferrer">Paper ↗</a></div></div>
+          </article>
+          <article class="lu-work" id="adaptive-auto-harness">
+            <figure>
+              <a class="lu-figure" href="https://arxiv.org/abs/2606.01770" target="_blank" rel="noopener noreferrer"><img src="assets/images/adaptive-auto-harness.png" alt="Adaptive Auto-Harness framework with a stateful evolver, harness tree, and solve-time routing" width="1020" height="554" loading="lazy" decoding="async"></a>
+              <figcaption class="lu-figure-caption">Harness evolution and task-wise routing</figcaption>
+            </figure>
+            <div>
+              <p class="lu-work-type">arXiv · 2026</p>
+              <h4><a href="https://arxiv.org/abs/2606.01770" target="_blank" rel="noopener noreferrer">Adaptive Auto-Harness: Sustained Self-Improvement for Agentic System Deployment on Open-Ended Task Streams</a></h4>
+              <p class="lu-authors">Zewen Liu, Zhan Shi, et al., <strong>Hanqing Lu</strong></p>
+              <p class="lu-summary">Sustaining agent performance on changing task streams through a stateful evolver, a harness tree, and task-wise routing.</p>
+              <div class="lu-links"><a href="https://arxiv.org/abs/2606.01770" target="_blank" rel="noopener noreferrer">Paper ↗</a><a href="https://github.com/A-EVO-Lab/AdaptiveHarness" target="_blank" rel="noopener noreferrer">Code ↗</a></div>
+            </div>
+          </article>
+        </section>
+
+        <section id="lu-autoresearch" class="lu-topic" aria-labelledby="lu-autoresearch-title">
+          <div class="lu-topic-title"><span class="lu-index">02</span><h3 id="lu-autoresearch-title">Autoresearch Harness</h3></div>
+          <p class="lu-question">Systems that organize and execute the research process: hypotheses, experiments, evaluation, and revision.</p>
+          <article class="lu-work">
+            <figure><a class="lu-figure" href="https://arxiv.org/abs/2606.20657" target="_blank" rel="noopener noreferrer"><img src="assets/images/a-evolve-training.png" alt="A-Evolve-Training autonomous post-training infrastructure from the paper" width="1536" height="1024" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">Autonomous post-training infrastructure</figcaption></figure>
+            <div><p class="lu-work-type">arXiv · 2026</p><h4><a href="https://arxiv.org/abs/2606.20657" target="_blank" rel="noopener noreferrer">A-Evolve-Training: Autonomous Post-Training of a 30B Model</a></h4><p class="lu-authors">Zhan Shi, Bing He, Yisi Sang, Benoit Dumoulin, <strong>Hanqing Lu</strong></p><p class="lu-summary">An autonomous system conducts a multi-week post-training campaign and revises its search policy when its internal proxy becomes misleading.</p><p class="lu-result">Reported score: 0.86 · top human submission: 0.87</p><div class="lu-links"><a href="https://arxiv.org/abs/2606.20657" target="_blank" rel="noopener noreferrer">Paper ↗</a><a href="https://a-evo-lab.github.io/a-evolve-training/" target="_blank" rel="noopener noreferrer">Project ↗</a><a href="posts/autonomous-post-training-30b.html">Research note ↗</a></div></div>
+          </article>
+        </section>
+
+        <section id="lu-evaluation" class="lu-topic" aria-labelledby="lu-evaluation-title">
+          <div class="lu-topic-title"><span class="lu-index">03</span><h3 id="lu-evaluation-title">RSI-Evaluation</h3></div>
+          <p class="lu-question">Evaluating autonomous research against real model-development problems and human baselines.</p>
+          <article class="lu-work">
+            <figure><a class="lu-figure" href="https://github.com/OpenRSI-Foundation/OpenRSI-Index" target="_blank" rel="noopener noreferrer"><img src="assets/images/openrsi-pipeline.png" alt="OpenRSI's RSI-Anything task-contribution pipeline" width="1672" height="941" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">OpenRSI · task-building pipeline</figcaption></figure>
+            <div><p class="lu-work-type">BENCHMARK · PROJECT CO-LEAD</p><h4><a href="https://rsi-first-exam.rsi-anything.workers.dev/" target="_blank" rel="noopener noreferrer">OpenRSI Index</a></h4><p class="lu-summary">An open benchmark for AI research agents, built around auditable tasks and fixed verifiers.</p><p class="lu-contribution"><strong>My contribution:</strong> co-led the project; designed, implemented, and ran the benchmark, including its Signature Tasks.</p><p class="lu-signatures">Marin-Scaling-Ladder · Qwen-122B-RL-Merge · GPIC</p><div class="lu-links"><a href="https://rsi-first-exam.rsi-anything.workers.dev/" target="_blank" rel="noopener noreferrer">Project ↗</a><a href="https://github.com/OpenRSI-Foundation/OpenRSI-Index" target="_blank" rel="noopener noreferrer">Code &amp; tasks ↗</a></div></div>
+          </article>
+        </section>
+
+        <section id="lu-training" class="lu-topic" aria-labelledby="lu-training-title">
+          <div class="lu-topic-title"><span class="lu-index">04</span><h3 id="lu-training-title">RSI-Training</h3></div>
+          <p class="lu-question">Training models for autonomous research.</p>
+          <div class="lu-future"><div><h4>Autoresearch Models</h4><p class="lu-summary">A forthcoming research direction.</p></div><span class="lu-forthcoming">Forthcoming</span></div>
+        </section>
+      </section>
+
+      <div class="lu-bottom">
+        <section id="writing" aria-labelledby="lu-writing-title"><h2 id="lu-writing-title">Henry’s Log</h2>
+          <a class="lu-writing-link" href="posts/three-bets-called-rsi.html">Why Researchers Are Leaving Frontier Labs: The Three Bets Called RSI<small>Essay · August 2026</small></a>
+          <a class="lu-writing-link" href="posts/evaluating-ai-scientists.html">How to Evaluate the AI Scientist / Self-Improving AI?<small>Essay · July 2026</small></a>
+          <div class="lu-links"><a href="writing.html">All writing ↗</a></div>
+        </section>
+        <section id="lu-background" class="lu-background" aria-labelledby="lu-background-title"><h2 id="lu-background-title">Background</h2><p>My earlier work spans production agents, foundation-model post-training, and machine learning systems at Amazon, Apple, and Microsoft Research.</p><p>M.S. · Carnegie Mellon University<br>B.Eng. · Zhejiang University</p></section>
+      </div>
     </main>
-
-    <footer class="site-footer">
-      <p>© <span id="current-year"></span> Hanqing Lu</p>
-      <a href="#top" aria-label="Back to top">Back to top ↑</a>
-    </footer>
-
-    <script src="assets/posts.js?v=20260806-4"></script>
-    <script src="assets/site.js?v=20260806-4"></script>
+    <footer><span>© <span id="current-year">2026</span> Hanqing Lu</span><a href="https://github.com/A-EVO-Lab" target="_blank" rel="noopener noreferrer">A-EVO Lab ↗</a></footer>
+  </div>
+    <script src="assets/site.js?v=20260918-1"></script>
   </body>
 </html>

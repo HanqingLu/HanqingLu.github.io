@@ -1,0 +1,120 @@
+#lu-academic-home {
+      color-scheme: light;
+      --lu-page: light-dark(#faf9f6, #191a1b);
+      --lu-ink: light-dark(#252727, #ecebe7);
+      --lu-muted: light-dark(#676c6b, #b6b9b5);
+      --lu-accent: light-dark(#934433, #e5a78e);
+      --lu-line: light-dark(#dddfd8, #3d4240);
+      --lu-surface: light-dark(#f0f0e9, #252b28);
+      --lu-accent-surface: light-dark(#f2e9e3, #322b26);
+      --lu-photo: light-dark(#e6e7df, #353c38);
+      --lu-serif: Georgia, 'Times New Roman', serif;
+      --lu-name-size: 43px;
+      --lu-figure-width: 212px;
+      background: var(--lu-page);
+      color: var(--lu-ink);
+      font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      container-type: inline-size;
+      width: 100%;
+      text-align: left;
+    }
+    #lu-academic-home * { box-sizing: border-box; }
+    #lu-academic-home :is(h1,h2,h3,h4,p,figure,ul) { margin: 0; }
+    #lu-academic-home a { color: inherit; text-decoration: none; }
+    #lu-academic-home a:hover { color: var(--lu-accent); text-decoration: underline; text-underline-offset: 4px; }
+    #lu-academic-home .lu-page { width: calc(100% - 100px); max-width: 940px; margin: 0 auto; }
+    #lu-academic-home .lu-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; min-height: 71px; border-bottom: 1px solid var(--lu-line); }
+    #lu-academic-home .lu-wordmark { font: 19px/1.2 var(--lu-serif); letter-spacing: -.02em; }
+    #lu-academic-home .lu-navigation { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 23px; font-size: 12px; }
+    #lu-academic-home .lu-theme { font: inherit; color: var(--lu-muted); background: transparent; border: 1px solid var(--lu-line); padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+    #lu-academic-home .lu-hero { display: grid; grid-template-columns: minmax(0,1fr) 176px; gap: 52px; padding: 40px 0 29px; align-items: start; }
+    #lu-academic-home .lu-eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--lu-accent); margin-bottom: 9px; }
+    #lu-academic-home h1 { font: 400 var(--lu-name-size)/1.15 var(--lu-serif); letter-spacing: -.035em; }
+    #lu-academic-home .lu-role { font-size: 14px; color: var(--lu-muted); margin-top: 12px; }
+    #lu-academic-home .lu-role a { color: var(--lu-ink); border-bottom: 1px solid var(--lu-accent); }
+    #lu-academic-home .lu-intro { margin-top: 20px; font-size: 16px; }
+    #lu-academic-home .lu-intro strong { font-weight: 500; color: var(--lu-accent); }
+    #lu-academic-home .lu-links { display: flex; flex-wrap: wrap; gap: 5px 18px; font-size: 12px; color: var(--lu-accent); }
+    #lu-academic-home .lu-hero .lu-links { margin-top: 19px; }
+    #lu-academic-home .lu-lab { display: grid; grid-template-columns: 168px minmax(0,1fr) auto; gap: 20px; align-items: center; padding: 19px 0; border-top: 1px solid var(--lu-line); border-bottom: 1px solid var(--lu-line); }
+    #lu-academic-home .lu-lab-name { font: 25px/1.2 var(--lu-serif); letter-spacing: -.02em; }
+    #lu-academic-home .lu-lab-description { font-size: 12px; color: var(--lu-muted); }
+    #lu-academic-home .lu-lab-description strong { display: block; color: var(--lu-ink); font-weight: 500; font-size: 14px; margin-bottom: 2px; }
+    #lu-academic-home .lu-lab-link { font-size: 12px; color: var(--lu-accent); }
+    #lu-academic-home .lu-research-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 30px; margin-bottom: 18px; }
+    #lu-academic-home h2 { font: 400 29px/1.2 var(--lu-serif); letter-spacing: -.03em; }
+    #lu-academic-home .lu-meta { font-size: 12px; color: var(--lu-muted); }
+    #lu-academic-home .lu-agenda { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 15px; padding-bottom: 24px; }
+    #lu-academic-home .lu-agenda a { display: block; border-top: 2px solid var(--lu-line); padding-top: 10px; font-size: 12px; }
+    #lu-academic-home .lu-agenda small { display: block; color: var(--lu-accent); font: 12px/1.5 ui-monospace, monospace; margin-bottom: 4px; }
+    #lu-academic-home .lu-agenda .lu-agenda-future { color: var(--lu-muted); }
+    #lu-academic-home .lu-topic { border-top: 1px solid var(--lu-line); padding: 24px 0 28px; scroll-margin-top: 20px; }
+    #lu-academic-home .lu-topic-title { display: flex; align-items: baseline; gap: 13px; margin-bottom: 7px; flex-wrap: wrap; }
+    #lu-academic-home .lu-index { font: 12px/1.5 ui-monospace, monospace; color: var(--lu-accent); }
+    #lu-academic-home h3 { font-size: 21px; line-height: 1.3; font-weight: 500; letter-spacing: -.03em; }
+    #lu-academic-home .lu-question { font-size: 14px; color: var(--lu-muted); margin-bottom: 22px; }
+    #lu-academic-home .lu-work { display: grid; grid-template-columns: var(--lu-figure-width) minmax(0,1fr); align-items: start; gap: 25px; margin-top: 22px; }
+    #lu-academic-home .lu-work:first-of-type { margin-top: 0; }
+    #lu-academic-home .lu-figure { background: var(--lu-surface); border: 1px solid var(--lu-line); border-radius: 2px; width: 100%; min-height: 116px; display: flex; align-items: center; justify-content: center; padding: 7px; }
+    #lu-academic-home .lu-figure img { display: block; width: 100%; height: auto; max-height: 154px; object-fit: contain; }
+    #lu-academic-home .lu-figure-caption { color: var(--lu-muted); font-size: 12px; line-height: 1.4; margin-top: 6px; }
+    #lu-academic-home h4 { font-size: 16px; font-weight: 500; line-height: 1.4; letter-spacing: -.015em; }
+    #lu-academic-home .lu-work-type { color: var(--lu-accent); font-size: 12px; margin-bottom: 5px; letter-spacing: .03em; }
+    #lu-academic-home .lu-authors { margin-top: 5px; font-size: 12px; color: var(--lu-muted); line-height: 1.45; }
+    #lu-academic-home .lu-authors strong { color: var(--lu-ink); font-weight: 500; }
+    #lu-academic-home .lu-summary { font-size: 14px; color: var(--lu-muted); line-height: 1.55; margin-top: 8px; }
+    #lu-academic-home .lu-work .lu-links { margin-top: 9px; }
+    #lu-academic-home .lu-result { font-size: 12px; margin-top: 10px; }
+    #lu-academic-home .lu-contribution { margin-top: 11px; font-size: 14px; color: var(--lu-ink); }
+    #lu-academic-home .lu-contribution strong { font-weight: 500; color: var(--lu-accent); }
+    #lu-academic-home .lu-signatures { margin-top: 8px; font-size: 12px; color: var(--lu-muted); }
+    #lu-academic-home .lu-future { background: var(--lu-surface); padding: 20px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+    #lu-academic-home .lu-future h4 { font: 400 24px/1.25 var(--lu-serif); }
+    #lu-academic-home .lu-forthcoming { color: var(--lu-muted); font-size: 12px; border: 1px solid var(--lu-line); padding: 5px 9px; white-space: nowrap; }
+    #lu-academic-home .lu-bottom { display: grid; grid-template-columns: 1.15fr 1fr; gap: 42px; padding-top: 26px; border-top: 1px solid var(--lu-line); }
+    #lu-academic-home .lu-bottom h2 { font-size: 25px; margin-bottom: 18px; }
+    #lu-academic-home .lu-writing-link { display: block; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+    #lu-academic-home .lu-writing-link small { font-size: 12px; display: block; color: var(--lu-muted); margin-top: 3px; }
+    #lu-academic-home .lu-background p { font-size: 14px; color: var(--lu-muted); margin-bottom: 13px; }
+    #lu-academic-home footer { border-top: 1px solid var(--lu-line); margin-top: 28px; padding: 21px 0 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--lu-muted); font-size: 12px; }
+    @container (max-width: 750px) {
+      #lu-academic-home .lu-page { width: calc(100% - 52px); }
+      #lu-academic-home .lu-hero { gap: 28px; grid-template-columns: minmax(0,1fr) 136px; }
+      #lu-academic-home h1 { font-size: 36px; }
+      #lu-academic-home .lu-lab { grid-template-columns: 140px minmax(0,1fr); gap: 12px; }
+      #lu-academic-home .lu-lab-link { grid-column: 2; }
+      #lu-academic-home .lu-work { grid-template-columns: 174px minmax(0,1fr); gap: 19px; }
+      #lu-academic-home .lu-navigation { gap: 8px 15px; }
+    }
+    @container (max-width: 530px) {
+      #lu-academic-home .lu-page { width: calc(100% - 36px); }
+      #lu-academic-home .lu-top { flex-wrap: wrap; padding: 17px 0; gap: 14px; }
+      #lu-academic-home .lu-navigation { gap: 8px 16px; font-size: 12px; }
+      #lu-academic-home .lu-hero { grid-template-columns: minmax(0,1fr); padding: 29px 0; gap: 22px; }
+      #lu-academic-home .lu-hero figure { width: 132px; }
+      #lu-academic-home h1 { font-size: 35px; }
+      #lu-academic-home .lu-intro { font-size: 14px; }
+      #lu-academic-home .lu-lab { grid-template-columns: minmax(0,1fr); gap: 10px; }
+      #lu-academic-home .lu-lab-link { grid-column: 1; }
+      #lu-academic-home .lu-agenda { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 17px; }
+      #lu-academic-home .lu-research-header { flex-wrap: wrap; gap: 6px; }
+      #lu-academic-home .lu-work { grid-template-columns: minmax(0,1fr); gap: 12px; margin-top: 27px; }
+      #lu-academic-home .lu-work figure { max-width: 350px; }
+      #lu-academic-home .lu-figure { min-height: 110px; }
+      #lu-academic-home .lu-future { grid-template-columns: minmax(0,1fr); gap: 12px; }
+      #lu-academic-home .lu-forthcoming { justify-self: start; }
+      #lu-academic-home .lu-bottom { grid-template-columns: minmax(0,1fr); gap: 30px; }
+    }
+    @media (pointer: coarse) {
+      #lu-academic-home .lu-theme, #lu-academic-home .lu-links a, #lu-academic-home .lu-navigation a { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; }
+html[data-theme="dark"] #lu-academic-home { color-scheme: dark; }
+#lu-academic-home .lu-portrait-photo { display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; object-position:center 35%; border-radius:2px; }
+#lu-academic-home .lu-work[id] { scroll-margin-top:24px; }
+#lu-academic-home .lu-skip { position:absolute; left:18px; top:-70px; padding:10px 16px; color:var(--lu-ink); background:var(--lu-page); z-index:20; border:1px solid var(--lu-accent); }
+#lu-academic-home .lu-skip:focus { top:12px; }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }

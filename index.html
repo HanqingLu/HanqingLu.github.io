@@ -12,7 +12,7 @@
     <title>Hanqing Lu | Recursive Self-Improvement &amp; Autonomous Research</title>
     <link rel="canonical" href="https://hanqinglu.github.io/">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/research.css?v=20260918-1">
+    <link rel="stylesheet" href="assets/research.css?v=20260918-2">
     <script src="assets/theme.js?v=20260918-1"></script>
   </head>
   <body id="lu-academic-home">
@@ -21,7 +21,7 @@
     <header class="lu-top">
       <a class="lu-wordmark" href="#lu-home">Hanqing Lu</a>
       <nav class="lu-navigation" aria-label="Primary navigation">
-        <a href="#lu-research">Research</a><a href="#lu-lab">Lab</a><a href="#writing">Writing</a><a href="#lu-background">Background</a>
+        <a href="#lu-research">Research</a><a href="#lu-lab">Lab</a><a href="#writing">Henry’s Log</a>
         <button class="lu-theme theme-toggle" type="button" aria-label="Switch to dark theme"><span class="theme-label">Dark</span></button>
       </nav>
     </header>
@@ -33,8 +33,8 @@
           <h1 id="lu-name">Hanqing (Henry) Lu</h1>
           <p class="lu-role">Founder &amp; Research Lead, <a href="https://github.com/A-EVO-Lab" target="_blank" rel="noopener noreferrer">A-EVO Lab</a> at Amazon</p>
           <p class="lu-intro">I study <strong>how AI can improve AI</strong>—from evolving agent harnesses to building autonomous research systems, evaluating their discoveries, and training models for research.</p>
-          <p class="lu-intro">I lead A-EVO Lab at Amazon and co-lead OpenRSI Index. Previously, I worked at Microsoft Research and earned my master’s degree in the Machine Learning Department at Carnegie Mellon University (CMU).</p>
-          <div class="lu-links"><a href="mailto:hanqinglucs@gmail.com">Email</a><a href="https://github.com/HanqingLu" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://x.com/HenryL_AI" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.linkedin.com/in/hanqinglu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+          <p class="lu-intro">I lead A-EVO Lab at Amazon and co-lead OpenRSI Index. Previously, I worked at Microsoft Research and studied machine learning at Carnegie Mellon University (CMU).</p>
+          <div class="lu-links"><a href="https://github.com/HanqingLu" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://x.com/HenryL_AI" target="_blank" rel="noopener noreferrer">X</a></div>
         </div>
         <figure>
           <img class="lu-portrait-photo" src="assets/images/hanqing-lu.jpg" alt="Hanqing (Henry) Lu" width="360" height="450" fetchpriority="high">
@@ -48,12 +48,13 @@
       </section>
 
       <section id="lu-research" aria-labelledby="lu-research-heading">
-        <div class="lu-research-header"><h2 id="lu-research-heading">Research</h2><span class="lu-meta">Four connected directions</span></div>
+        <div class="lu-research-header"><h2 id="lu-research-heading">Research</h2><span class="lu-meta">Research agenda &amp; selected papers</span></div>
         <nav class="lu-agenda" aria-label="Research directions">
           <a href="#lu-harness"><small>01</small>RSI-Harness</a>
           <a href="#lu-autoresearch"><small>02</small>Autoresearch Harness</a>
           <a href="#lu-evaluation"><small>03</small>RSI-Evaluation</a>
           <a href="#lu-training" class="lu-agenda-future"><small>04</small>RSI-Training</a>
+          <a href="#lu-agents-rl" class="lu-agenda-secondary"><small>05</small>Agents &amp; RL</a>
         </nav>
 
         <section id="lu-harness" class="lu-topic" aria-labelledby="lu-harness-title">
@@ -107,7 +108,7 @@
           <div class="lu-topic-title"><span class="lu-index">03</span><h3 id="lu-evaluation-title">RSI-Evaluation</h3></div>
           <p class="lu-question">Evaluating autonomous research against real model-development problems and human baselines.</p>
           <article class="lu-work">
-            <figure><a class="lu-figure" href="https://github.com/OpenRSI-Foundation/OpenRSI-Index" target="_blank" rel="noopener noreferrer"><img src="assets/images/openrsi-pipeline.png" alt="OpenRSI's RSI-Anything task-contribution pipeline" width="1672" height="941" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">OpenRSI · task-building pipeline</figcaption></figure>
+            <figure><a class="lu-figure" href="https://github.com/OpenRSI-Foundation/OpenRSI-Index/blob/7af56eea240ad1d971a2c91cb85bce0e36835eab/assets/figures/rsi-anything-pipeline.png" target="_blank" rel="noopener noreferrer"><img src="assets/images/openrsi-pipeline.png" alt="OpenRSI's RSI-Anything task-contribution pipeline" width="1672" height="941" loading="lazy" decoding="async"></a><figcaption class="lu-figure-caption">RSI-Anything · task-building workflow</figcaption></figure>
             <div><p class="lu-work-type">BENCHMARK · PROJECT CO-LEAD</p><h4><a href="https://rsi-first-exam.rsi-anything.workers.dev/" target="_blank" rel="noopener noreferrer">OpenRSI Index</a></h4><p class="lu-summary">An open benchmark for AI research agents, built around auditable tasks and fixed verifiers.</p><p class="lu-contribution"><strong>My contribution:</strong> co-led the project; designed, implemented, and ran the benchmark, including its Signature Tasks.</p><p class="lu-signatures">Marin-Scaling-Ladder · Qwen-122B-RL-Merge · GPIC</p><div class="lu-links"><a href="https://rsi-first-exam.rsi-anything.workers.dev/" target="_blank" rel="noopener noreferrer">Project ↗</a><a href="https://github.com/OpenRSI-Foundation/OpenRSI-Index" target="_blank" rel="noopener noreferrer">Code &amp; tasks ↗</a></div></div>
           </article>
         </section>
@@ -117,6 +118,24 @@
           <p class="lu-question">Training models for autonomous research.</p>
           <div class="lu-future"><div><h4>Autoresearch Models</h4><p class="lu-summary">A forthcoming research direction.</p></div><span class="lu-forthcoming">Forthcoming</span></div>
         </section>
+
+        <section id="lu-agents-rl" class="lu-topic lu-secondary" aria-labelledby="lu-agents-rl-title">
+          <div class="lu-topic-title"><span class="lu-index">05</span><h3 id="lu-agents-rl-title">Agents &amp; Reinforcement Learning</h3></div>
+          <p class="lu-question">Selected work on agent training, tool-use evaluation, and value-guided decoding.</p>
+          <article class="lu-publication">
+            <p class="lu-publication-venue">ACL 2026</p>
+            <div><h4><a href="https://aclanthology.org/2026.acl-long.2037/" target="_blank" rel="noopener noreferrer">Trajectory2Task: Training Robust Tool-Calling Agents with Synthesized Yet Verifiable Data for Complex User Intents ↗</a></h4><p class="lu-authors">Ziyi Wang, Yuxuan Lu, …, <strong>Hanqing Lu</strong>, …, Dakuo Wang</p></div>
+          </article>
+          <article class="lu-publication">
+            <p class="lu-publication-venue">ICLR 2026</p>
+            <div><h4><a href="https://arxiv.org/abs/2510.04550" target="_blank" rel="noopener noreferrer">TRAJECT-Bench: A Trajectory-Aware Benchmark for Evaluating Agentic Tool Use ↗</a></h4><p class="lu-authors">Pengfei He, Zhenwei Dai, …, <strong>Hanqing Lu</strong>, …, Benoit Dumoulin</p></div>
+          </article>
+          <article class="lu-publication">
+            <p class="lu-publication-venue">NeurIPS 2017</p>
+            <div><h4><a href="https://proceedings.neurips.cc/paper/2017/hash/2b24d495052a8ce66358eb576b8912c8-Abstract.html" target="_blank" rel="noopener noreferrer">Decoding with Value Networks for Neural Machine Translation ↗</a></h4><p class="lu-authors">Di He, <strong>Hanqing Lu</strong>, Yingce Xia, Tao Qin, Liwei Wang, Tie-Yan Liu</p></div>
+          </article>
+          <div class="lu-links"><a href="https://scholar.google.com/citations?user=pNYuJQIAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Full publication list ↗</a></div>
+        </section>
       </section>
 
       <div class="lu-bottom">
@@ -125,7 +144,6 @@
           <a class="lu-writing-link" href="posts/evaluating-ai-scientists.html">How to Evaluate the AI Scientist / Self-Improving AI?<small>Essay · July 2026</small></a>
           <div class="lu-links"><a href="writing.html">All writing ↗</a></div>
         </section>
-        <section id="lu-background" class="lu-background" aria-labelledby="lu-background-title"><h2 id="lu-background-title">Background</h2><p>My earlier work spans production agents, foundation-model post-training, and machine learning systems at Amazon, Apple, and Microsoft Research.</p><p>M.S. · Carnegie Mellon University<br>B.Eng. · Zhejiang University</p></section>
       </div>
     </main>
     <footer><span>© <span id="current-year">2026</span> Hanqing Lu</span><a href="https://github.com/A-EVO-Lab" target="_blank" rel="noopener noreferrer">A-EVO Lab ↗</a></footer>

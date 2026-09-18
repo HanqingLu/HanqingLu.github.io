@@ -45,10 +45,10 @@
     #lu-academic-home .lu-research-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 30px; margin-bottom: 18px; }
     #lu-academic-home h2 { font: 400 29px/1.2 var(--lu-serif); letter-spacing: -.03em; }
     #lu-academic-home .lu-meta { font-size: 12px; color: var(--lu-muted); }
-    #lu-academic-home .lu-agenda { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 15px; padding-bottom: 24px; }
+    #lu-academic-home .lu-agenda { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 15px; padding-bottom: 24px; }
     #lu-academic-home .lu-agenda a { display: block; border-top: 2px solid var(--lu-line); padding-top: 10px; font-size: 12px; }
     #lu-academic-home .lu-agenda small { display: block; color: var(--lu-accent); font: 12px/1.5 ui-monospace, monospace; margin-bottom: 4px; }
-    #lu-academic-home .lu-agenda .lu-agenda-future { color: var(--lu-muted); }
+    #lu-academic-home .lu-agenda :is(.lu-agenda-future, .lu-agenda-secondary) { color: var(--lu-muted); }
     #lu-academic-home .lu-topic { border-top: 1px solid var(--lu-line); padding: 24px 0 28px; scroll-margin-top: 20px; }
     #lu-academic-home .lu-topic-title { display: flex; align-items: baseline; gap: 13px; margin-bottom: 7px; flex-wrap: wrap; }
     #lu-academic-home .lu-index { font: 12px/1.5 ui-monospace, monospace; color: var(--lu-accent); }
@@ -72,11 +72,15 @@
     #lu-academic-home .lu-future { background: var(--lu-surface); padding: 20px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
     #lu-academic-home .lu-future h4 { font: 400 24px/1.25 var(--lu-serif); }
     #lu-academic-home .lu-forthcoming { color: var(--lu-muted); font-size: 12px; border: 1px solid var(--lu-line); padding: 5px 9px; white-space: nowrap; }
-    #lu-academic-home .lu-bottom { display: grid; grid-template-columns: 1.15fr 1fr; gap: 42px; padding-top: 26px; border-top: 1px solid var(--lu-line); }
+    #lu-academic-home .lu-secondary h3 { font-size: 19px; }
+    #lu-academic-home .lu-publication { display: grid; grid-template-columns: 105px minmax(0,1fr); gap: 18px; padding: 15px 0; border-top: 1px solid var(--lu-line); }
+    #lu-academic-home .lu-publication h4 { font-size: 14px; }
+    #lu-academic-home .lu-publication-venue { font-size: 12px; color: var(--lu-muted); }
+    #lu-academic-home .lu-secondary > .lu-links { margin-top: 9px; }
+    #lu-academic-home .lu-bottom { padding-top: 26px; border-top: 1px solid var(--lu-line); }
     #lu-academic-home .lu-bottom h2 { font-size: 25px; margin-bottom: 18px; }
     #lu-academic-home .lu-writing-link { display: block; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
     #lu-academic-home .lu-writing-link small { font-size: 12px; display: block; color: var(--lu-muted); margin-top: 3px; }
-    #lu-academic-home .lu-background p { font-size: 14px; color: var(--lu-muted); margin-bottom: 13px; }
     #lu-academic-home footer { border-top: 1px solid var(--lu-line); margin-top: 28px; padding: 21px 0 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--lu-muted); font-size: 12px; }
     @container (max-width: 750px) {
       #lu-academic-home .lu-page { width: calc(100% - 52px); }
@@ -104,7 +108,7 @@
       #lu-academic-home .lu-figure { min-height: 110px; }
       #lu-academic-home .lu-future { grid-template-columns: minmax(0,1fr); gap: 12px; }
       #lu-academic-home .lu-forthcoming { justify-self: start; }
-      #lu-academic-home .lu-bottom { grid-template-columns: minmax(0,1fr); gap: 30px; }
+      #lu-academic-home .lu-publication { grid-template-columns: minmax(0,1fr); gap: 5px; }
     }
     @media (pointer: coarse) {
       #lu-academic-home .lu-theme, #lu-academic-home .lu-links a, #lu-academic-home .lu-navigation a { min-height: 44px; display: inline-flex; align-items: center; }

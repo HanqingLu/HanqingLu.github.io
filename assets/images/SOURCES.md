@@ -10,3 +10,5 @@ Public portrait and original research figures reused for Hanqing Lu’s research
 - `memma.png`: https://arxiv.org/html/2603.18718v2/memma_framework_v6.png
 - `a-evolve-training.png`: https://arxiv.org/html/2606.20657v3/ai_autonomous_post_training_infrastructure_diagram3.png
 - `adaptive-auto-harness.png`: https://arxiv.org/html/2606.01770v2/framework.png
+
+- `research-world-models.png`: https://arxiv.org/html/2610.12235v1/teaser-aligned-v4.png (Figure 1)

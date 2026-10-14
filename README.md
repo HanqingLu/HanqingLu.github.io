@@ -1,7 +1,7 @@
 # Hanqing Lu — Research Homepage
 
 A dependency-free research homepage and writing archive for GitHub Pages. The homepage groups work
-into RSI-Harness, Autoresearch Harness, RSI-Evaluation, and RSI-Training, followed by a compact
+into RSI-Training, RSI-Harness, Autoresearch Harness, and RSI-Evaluation, followed by a compact
 selection of Agents & Reinforcement Learning papers. Henry's Log remains the
 writing archive at `writing.html`, and existing article URLs are preserved.
 

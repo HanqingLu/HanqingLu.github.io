@@ -12,3 +12,4 @@ Public portrait and original research figures reused for Hanqing Lu’s research
 - `adaptive-auto-harness.png`: https://arxiv.org/html/2606.01770v2/framework.png
 
 - `research-world-models.png`: https://arxiv.org/html/2610.12235v1/teaser-aligned-v4.png (Figure 1)
+- `lm2lm-framework.png`: https://arxiv.org/html/2610.23344v1/figures/fig_framework_v1.png (Figure 2)

@@ -1,6 +1,14 @@
 // The homepage sorts posts newest-first.
 window.BLOG_POSTS = [
   {
+  "title": "Recursive's Flint and Mirendil-Base: What Did the AI Actually Do in Building Frontier Models?",
+  "summary": "Breaking down Flint and Mirendil-Base: what the agents actually did, how the research worked, and what comes next.",
+  "date": "2026-10-22",
+  "readingTime": "6 min read",
+  "category": "Essay",
+  "url": "posts/ai-built-models.html"
+},
+  {
     title: "Why Researchers Are Leaving Frontier Labs: The Three Bets Called RSI",
     summary: "A map of current RSI bets through one axis: verification cost, from cheap verifiers to real frontier post-training.",
     date: "2026-08-06",

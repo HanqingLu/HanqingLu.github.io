@@ -13,3 +13,4 @@ Public portrait and original research figures reused for Hanqing Lu’s research
 
 - `research-world-models.png`: https://arxiv.org/html/2610.12235v1/teaser-aligned-v4.png (Figure 1)
 - `lm2lm-framework.png`: https://arxiv.org/html/2610.23344v1/figures/fig_framework_v1.png (Figure 2)
+- `lm2lm-unseen-qwen3.png`: original visualization of selected Table 2 results from https://arxiv.org/html/2610.23344v1 (Avg@4 gains on the held-out Qwen3 family).

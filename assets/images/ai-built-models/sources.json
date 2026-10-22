@@ -1,0 +1,18 @@
+{
+  "recursive-logo.svg": {
+    "source": "https://recursive.com/",
+    "extraction": "Official header wordmark, decoded from inline SVG data URL; original colors preserved."
+  },
+  "recursive-logo.png": {
+    "source": "recursive-logo.svg",
+    "rendering": "Rendered with sharp; unchanged design and colors."
+  },
+  "mirendil-logo-hero.png": {
+    "source": "https://mirendil.com/assets/logo-hero.png?v=3",
+    "use": "Official header logo, unchanged."
+  },
+  "lm2lm-unseen-qwen3.png": {
+    "source": "https://hanqinglu.github.io/assets/images/lm2lm-unseen-qwen3.png",
+    "use": "Unmodified original image."
+  }
+}

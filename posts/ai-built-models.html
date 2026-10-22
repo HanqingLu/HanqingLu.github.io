@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Breaking down Flint and Mirendil-Base: what the agents actually did, how the research worked, and what comes next." />
+    <meta name="theme-color" content="#faf9f6" />
+    <title>Recursive&#x27;s Flint and Mirendil-Base: What Did the AI Actually Do in Building Frontier Models? · Henry’s Log</title>
+    <link rel="canonical" href="https://hanqinglu.github.io/posts/ai-built-models.html" />
+    <meta property="og:title" content="Recursive&#x27;s Flint and Mirendil-Base: What Did the AI Actually Do in Building Frontier Models?" />
+    <meta property="og:description" content="Breaking down Flint and Mirendil-Base: what the agents actually did, how the research worked, and what comes next." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hanqinglu.github.io/posts/ai-built-models.html" />
+    <meta property="og:image" content="https://hanqinglu.github.io/assets/images/ai-built-models/cover.png" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260806-5" />
+    <link rel="stylesheet" href="../assets/editorial.css?v=20260918-1" />
+    <script src="../assets/theme.js?v=20260918-1"></script>
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <a class="wordmark" href="../" aria-label="Hanqing Lu home">Hanqing Lu</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="../#lu-research">Research</a>
+        <a class="nav-link is-active" href="../writing.html">Henry’s Log</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark theme"><span class="theme-label">Dark</span></button>
+      </nav>
+    </header>
+    <main class="article-shell">
+      <a class="back-link" href="../writing.html">← All writing</a>
+      <article>
+        <header class="article-header">
+          <p class="eyebrow">ESSAY · OCTOBER 22, 2026 · 6 MIN READ</p>
+          <h1>Recursive&#x27;s Flint and Mirendil-Base: What Did the AI Actually Do in Building Frontier Models?</h1>
+          <p class="article-dek">Breaking down Flint and Mirendil-Base: what the agents actually did, how the research worked, and what comes next.</p>
+          <a class="article-source" href="https://x.com/HenryL_AI/status/2113368498080719134" target="_blank" rel="noopener noreferrer">Originally published on X ↗</a>
+        </header>
+        <div class="article-content">
+<figure class="article-figure"><img alt="Recursive Flint and Mirendil-Base, with official company logos: what the agents improved, how the research worked, and what comes next." src="../assets/images/ai-built-models/cover.png" width="1600" height="900" loading="lazy" decoding="async" /></figure>
+<h2>What “AI-built” actually means in these two releases</h2>
+<p>This week, Recursive and Mirendil introduced <strong><a href="https://recursive.com/updates/introducing-recursive-flint">Flint</a> and <a href="https://mirendil.com/news/pretraining-at-scale-without-a-pretraining-team/">Mirendil-Base</a></strong>, both built with significant AI assistance.</p>
+<p>Flint’s release details architecture, quantization, and kernel improvements. Mirendil reports that one researcher working with agents pretrained a <strong>100B–500B model in 3.5 months</strong>.</p>
+<p>What did the agents actually do? How did the research loop work? And can the experiments behind these models help train better AI researchers?</p>
+<h2>Flint: architecture, quantization, and kernels that the agents proposed</h2>
+<p>Flint targets useful coding performance at local inference speeds. That objective creates connected problems in architecture, numerical precision, and hardware execution. Its most instructive example is how improvements across those layers fit together.</p>
+<p>Recursive reports that Eureka searched expert configurations and widths, moving from <strong>35B total / 3B active parameters to 40B / 2.5B</strong>. It then quantized the output head to four bits, used offline distillation to recover accuracy, and generated specialized inference kernels, including a fused Metal decode kernel. The release explains that the output head accounts for a substantial share of weight reads in this sparse model. <a href="https://recursive.com/updates/introducing-recursive-flint">Flint release</a></p>
+<figure class="article-figure"><img alt="Four connected optimization questions in Flint: reduce active parameters, reduce weight traffic, recover quality after quantization, and make the implementation fast on hardware." src="../assets/images/ai-built-models/flint-breakdown.png" width="1600" height="900" loading="lazy" decoding="async" /><figcaption>The figure organizes reported changes by the engineering problems they address; it does not reconstruct the agents’ private reasoning or complete experimental history.</figcaption></figure>
+<p>A mixture-of-experts model separates the parameters it stores from those it activates per token. Increasing total capacity while reducing active computation opens a search direction, but leaves a systems question: which operations now dominate runtime?</p>
+<p>My interpretation is that the sequence illustrates a changing bottleneck. Once one component becomes cheaper, another can account for more of the remaining cost. Parameter count alone cannot tell you where the time goes.</p>
+<p>Compression then introduces a quality constraint; recovery adds a training cost; kernels determine whether the proposed savings materialize. Each choice changes the conditions under which the next choice should be evaluated.</p>
+<p><strong>The technical lesson is that an improvement changes the problem the next experiment should address.</strong> A cheaper architecture, a compressed representation, and an optimized implementation must work together. Evaluating the final combination under consistent quality and hardware constraints is what establishes whether the research paid off.</p>
+<h2>The research loop behind Eureka (and its limits)</h2>
+<p>The machinery behind this work connects proposal generation to execution, measurement, and another research decision.</p>
+<p>Recursive’s <a href="https://recursive.com/updates/first-steps-toward-automated-ai-research">earlier system report</a> describes a loop that proposes ideas, implements them, executes experiments, validates outcomes, and selects further experiments. It explores parallel branches, retains experimental context, and combines promising approaches.</p>
+<p>An agent therefore needs more than access to code. It needs an environment where a proposed change can be tested, a record of what happened, and criteria for accepting or rejecting the result. Those components determine whether a promising idea becomes usable evidence for the next experiment.</p>
+<p>Validation is part of that machinery. In its earlier kernel experiments, Recursive found candidates exploiting caching, persistent state, and timing details. It strengthened correctness checks accordingly. A higher score needs an explanation that survives scrutiny. <a href="https://recursive.com/updates/first-steps-toward-automated-ai-research">System report</a></p>
+<p>Flint's release does not disclose a complete record of human intervention, so this describes the reported research machinery, not an AI-versus-human contribution percentage.</p>
+<h2>Mirendil: one researcher, 99% agent-written code, and the judgment bottleneck</h2>
+<p>Mirendil makes the division of work more explicit: agents handle much of the implementation and execution, while an experienced researcher directs the project and judges the evidence.</p>
+<p>Its report describes <strong>one researcher, 3.5 months, and less than $10M in compute</strong>, including research runs, agent tokens, and data processing. Starting from an empty repository on standard libraries, researcher and agents built the data pipelines, model, training algorithm, and infrastructure. Agents wrote over 99% of the code, ran experiments, and diagnosed failures; the researcher directed the work, judged results, and intervened. <a href="https://mirendil.com/news/pretraining-at-scale-without-a-pretraining-team/">Mirendil release</a></p>
+<p>In practical terms, this requires the agents to connect work across specialties. Consider a proposed data-mixture change: it needs a working pipeline, a compatible training configuration, a completed run, and an interpretable comparison. A failure anywhere in that chain can prevent the researcher from learning whether the idea helped.</p>
+<p><strong>When implementation becomes easier to delegate, deciding which experiments deserve compute becomes more consequential.</strong> The researcher still has to distinguish an informative comparison from a misleading result and decide which direction merits another run.</p>
+<p>The code percentage does not measure that judgment. Mirendil's account makes the remaining human role visible, without quantifying how much of the project's progress it contributed. This raises a practical next question: can experimental experience teach models some of that decision-making ability?</p>
+<h2>Can experimental records train better research models?</h2>
+<p>Each completed experiment produces something reusable: a proposed intervention, its context, and a measured outcome. Those records can inform subsequent decisions in both kinds of workflow.</p>
+<p>The next question is how deeply that experience changes the system. It might retrieve a relevant past result, predict which new idea will help, or learn parameters that make its proposals more effective.</p>
+<p><strong>For RSI, a useful test is whether learned research ability transfers to an unfamiliar target under a controlled budget.</strong> That asks whether experience improved the researcher itself. It is a direction to investigate, not a claim about undisclosed capabilities at either company.</p>
+<h2>RWM and LM2LM: using past experiments as a reward signal</h2>
+<p>Our recent work connects these steps: <strong>experimental records → predicted gains → rewards for training a better proposer.</strong></p>
+<p>In <a href="https://arxiv.org/abs/2610.12235">Research World Models (RWM)</a>, we study how real experimental experience helps language models predict the gains of new interventions and select experiments across pretraining, post-training, and inference settings.</p>
+<p><a href="https://arxiv.org/abs/2610.23344">LM2LM</a> uses those predicted gains as reinforcement-learning rewards, avoiding a costly training run for every candidate proposal. The RWM’s weights stay frozen; we periodically execute highly ranked current-policy proposals and add measured outcomes to its context to counter overestimation as the policy changes.</p>
+<p>The transfer experiment below makes the distinction concrete. Qwen3 was excluded from proposer training and reward-model grounding. On this unseen target family, LM2LM's trained 27B proposer achieved <strong>53.72 average experimental gain, versus 21.63 for GPT-6-sol with 300 records in context</strong>, in units of 10⁻³ BPB. The proposed changes were actually executed. <a href="https://arxiv.org/abs/2610.23344">LM2LM</a></p>
+<figure class="article-figure"><img alt="LM2LM generalizes to an unseen Qwen3 target family: average experimental gain is 53.72 for the trained proposer versus 21.63 for GPT-6-sol with 300 experimental records." src="../assets/images/ai-built-models/lm2lm-unseen-qwen3.png" width="3200" height="1800" loading="lazy" decoding="async" /><figcaption>Avg@4 averages real-execution gains across four proposals per research state. These are research-intervention gains, not general Qwen3 benchmark scores. <a href="https://hanqinglu.github.io/assets/images/lm2lm-unseen-qwen3.png">Original figure</a>.</figcaption></figure>
+<p>The result offers a concrete next step for AI-built models: <strong>use the experience of building models to train agents that propose better improvements to the next one.</strong></p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-footer"><p>© <span id="current-year"></span> Hanqing Lu</p><a href="#top" aria-label="Back to top">Back to top ↑</a></footer>
+    <script src="../assets/site.js?v=20260918-1"></script>
+  </body>
+</html>
